@@ -1,5 +1,5 @@
 //
-//  MMViewController.h
+//  MMPickerView.h
 //  MMPickerView
 //
 //  Created by Madjid Mahdjoubi on 6/5/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MMViewController : UIViewController  <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface MMPickerView : UIPickerView
 
 @end

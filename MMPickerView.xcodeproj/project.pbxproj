@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02A094D4176034A2007002E6 /* MMPickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A094D3176034A2007002E6 /* MMPickerViewCell.m */; };
 		02D8FC53175F272000DE34E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC52175F272000DE34E6 /* UIKit.framework */; };
 		02D8FC55175F272000DE34E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC54175F272000DE34E6 /* Foundation.framework */; };
 		02D8FC57175F272000DE34E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC56175F272000DE34E6 /* CoreGraphics.framework */; };
@@ -18,9 +19,13 @@
 		02D8FC69175F272000DE34E6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02D8FC68175F272000DE34E6 /* Default-568h@2x.png */; };
 		02D8FC6C175F272000DE34E6 /* MMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D8FC6B175F272000DE34E6 /* MMViewController.m */; };
 		02D8FC6F175F272000DE34E6 /* MMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02D8FC6D175F272000DE34E6 /* MMViewController.xib */; };
+		02D8FC77175F275F00DE34E6 /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D8FC76175F275F00DE34E6 /* MMPickerView.m */; };
+		02D8FCAD175F54C100DE34E6 /* MMPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02D8FCAC175F54C100DE34E6 /* MMPickerViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02A094D2176034A2007002E6 /* MMPickerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPickerViewCell.h; sourceTree = "<group>"; };
+		02A094D3176034A2007002E6 /* MMPickerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerViewCell.m; sourceTree = "<group>"; };
 		02D8FC4F175F272000DE34E6 /* MMPickerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMPickerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D8FC52175F272000DE34E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		02D8FC54175F272000DE34E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +42,9 @@
 		02D8FC6A175F272000DE34E6 /* MMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMViewController.h; sourceTree = "<group>"; };
 		02D8FC6B175F272000DE34E6 /* MMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMViewController.m; sourceTree = "<group>"; };
 		02D8FC6E175F272000DE34E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MMViewController.xib; sourceTree = "<group>"; };
+		02D8FC75175F275F00DE34E6 /* MMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
+		02D8FC76175F275F00DE34E6 /* MMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerView.m; sourceTree = "<group>"; };
+		02D8FCAC175F54C100DE34E6 /* MMPickerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MMPickerViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,11 @@
 				02D8FC6A175F272000DE34E6 /* MMViewController.h */,
 				02D8FC6B175F272000DE34E6 /* MMViewController.m */,
 				02D8FC6D175F272000DE34E6 /* MMViewController.xib */,
+				02D8FC75175F275F00DE34E6 /* MMPickerView.h */,
+				02D8FC76175F275F00DE34E6 /* MMPickerView.m */,
+				02A094D2176034A2007002E6 /* MMPickerViewCell.h */,
+				02A094D3176034A2007002E6 /* MMPickerViewCell.m */,
+				02D8FCAC175F54C100DE34E6 /* MMPickerViewCell.xib */,
 				02D8FC59175F272000DE34E6 /* Supporting Files */,
 			);
 			path = MMPickerView;
@@ -164,6 +177,7 @@
 				02D8FC67175F272000DE34E6 /* Default@2x.png in Resources */,
 				02D8FC69175F272000DE34E6 /* Default-568h@2x.png in Resources */,
 				02D8FC6F175F272000DE34E6 /* MMViewController.xib in Resources */,
+				02D8FCAD175F54C100DE34E6 /* MMPickerViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +191,8 @@
 				02D8FC5F175F272000DE34E6 /* main.m in Sources */,
 				02D8FC63175F272000DE34E6 /* MMAppDelegate.m in Sources */,
 				02D8FC6C175F272000DE34E6 /* MMViewController.m in Sources */,
+				02D8FC77175F275F00DE34E6 /* MMPickerView.m in Sources */,
+				02A094D4176034A2007002E6 /* MMPickerViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +315,7 @@
 				02D8FC74175F272000DE34E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
