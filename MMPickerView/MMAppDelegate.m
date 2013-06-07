@@ -8,7 +8,7 @@
 
 #import "MMAppDelegate.h"
 
-#import "MMViewController.h"
+#import "MMTestViewController.h"
 
 @implementation MMAppDelegate
 
@@ -16,7 +16,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-  self.viewController = [[MMViewController alloc] initWithNibName:@"MMViewController" bundle:nil];
+  self.viewController = [[MMTestViewController alloc] initWithNibName:@"MMTestViewController" bundle:nil];
   self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
