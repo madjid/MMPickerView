@@ -11,5 +11,6 @@
 
 @interface MMTestViewController : UIViewController
 - (IBAction)showPickerViewButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

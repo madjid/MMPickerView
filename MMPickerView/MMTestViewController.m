@@ -36,7 +36,9 @@
 }
 
 - (IBAction)showPickerViewButtonPressed:(id)sender {
-  [MMPickerView showInView:self.view withArray:@[@"Hej", @"Test"]];
-
+  [MMPickerView showInView:self.view withArray:@[@"Hej", @"Test"] completion:^{
+    _label.text = @"first";
+  }];
+  
 }
 @end

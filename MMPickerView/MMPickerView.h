@@ -19,14 +19,21 @@
 @property (nonatomic, strong) UIButton *pickerDoneButton;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
-
+@property (nonatomic, strong) NSString *pickerViewChosenString;
 
 
 +(void)showInView: (UIView *)view
         withArray: (NSArray *)array;
 
++(void)showInView: (UIView *)view
+        withArray: (NSArray *)array
+        completion: (void(^)(void))completion;
+
 +(void)dismiss;
 
-+(void)dismissfromView;
++(void)dismissWithCompletion: (void(^)(void))completion;;
+
+
++(NSString *)pickerViewChosenString;
 
 @end
