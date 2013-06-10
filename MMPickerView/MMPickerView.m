@@ -26,6 +26,8 @@
   return sharedView;
 }
 
+#pragma mark - Show Methods
+
 +(void)showInView:(UIView *)view
         withArray:(NSArray *)array{
   [[self sharedView] initializePickerViewInView:view withArray:array];
@@ -35,18 +37,24 @@
   
  // [[self sharedView] addSomething];
   
- // [view addSubview:[self sharedView]];
-  
 }
 
+#pragma mark - Dismiss Methods
+
 +(void)dismiss{
- // [[self sharedView] setPickerHidden:YES];
-  [[self sharedView] initializePickerViewInView:nil withArray:nil];
+  [[self sharedView] setPickerHidden:YES];
+  //[[self sharedView] initializePickerViewInView:nil withArray:nil];
 }
 
 +(void)dismissfromView{
+  /*
+  [[self sharedView] setPickerHidden:YES callBack:^{
+    NSLog(@"test");
+    [[self sharedView] removeFromSuperview];
+  }];
+   */
+  [[self sharedView] setPickerHidden:YES];
 
-  [[self sharedView] removeFromSuperview];
 }
 
 -(void)initializePickerViewInView: (UIView *)view
@@ -90,6 +98,7 @@
   _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0, 44.0, 320.0, 216.0)];
   [_pickerView setDelegate:self];
   [_pickerView setDataSource:self];
+  [_pickerView setShowsSelectionIndicator:YES];
   [_pickerContainerView addSubview:_pickerView];
 
   [_pickerContainerView setTransform:CGAffineTransformMakeTranslation(0.0, CGRectGetHeight(_pickerContainerView.frame))];
@@ -98,13 +107,17 @@
 
 
 -(void)dismiss{
-  [self setPickerHidden:YES];
-  //[MMPickerView showInView:nil withArray:nil];
- //[MMPickerView dismissfromView];
+ [MMPickerView dismissfromView];
+
 }
 
 
++(void)removePickerView{
+  [[self sharedView] removeFromSuperview];
+}
+
 #pragma mark - Show/hide MMPickerView
+
 -(void)setPickerHidden: (BOOL)hidden{
   
   [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
@@ -123,7 +136,41 @@
                      }
                      
                    } completion:^(BOOL completed) {
+                     if (completed && hidden) {
+                       [MMPickerView removePickerView];
+                     }
+   
+                   }];
+  
+}
 
+
+-(void)setPickerHidden: (BOOL)hidden callBack:(void(^)(void))callBack; {
+  
+  [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
+                   animations:^{
+                     
+                     if (hidden) {
+                       
+                       [_pickerViewContainerView setAlpha:0.0];
+                       [_pickerContainerView setTransform:CGAffineTransformMakeTranslation(0.0, CGRectGetHeight(_pickerContainerView.frame))];
+                       
+                     } else {
+                       
+                       [_pickerViewContainerView setAlpha:1.0];
+                       [_pickerContainerView setTransform:CGAffineTransformIdentity];
+                       
+                     }
+                     
+                   } completion:^(BOOL completed) {
+
+                     if(completed){
+                        callBack:(void) ^{
+                       
+                          NSLog(@"COmpletion block");
+                        };
+                     }
+                     
                    }];
   
 }
@@ -150,59 +197,61 @@
 
 #pragma mark - UIPickerViewDelegate
 
-/*
+
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-  _countryLabel.text = [self.countryNames objectAtIndex:row];
+//  _countryLabel.text = [self.countryNames objectAtIndex:row];
   
 }
-*/
 
 
+
+
+
+/*
 - (UIView *)pickerView:(UIPickerView *)pickerView
             viewForRow:(NSInteger)row
           forComponent:(NSInteger)component
            reusingView:(UIView *)view {
   
-  _pickerViewLabelView = view;
+  UIView *customPickerView = view;
   
-  if (_pickerViewLabelView==nil) {
+  UILabel *pickerViewLabel;
+  
+  if (customPickerView==nil) {
     
     CGRect frame = CGRectMake(0.0, 0.0, 292.0, 44.0);
-    [_pickerViewLabelView setFrame: frame];
+    customPickerView = [[UIView alloc] initWithFrame: frame];
     
-    /*
-     UIImageView *patternImageView = [[UIImageView alloc] initWithFrame:frame];
-     patternImageView.image = [[UIImage imageNamed:@"texture"] resizableImageWithCapInsets:UIEdgeInsetsZero];
-     [customPickerView addSubview:patternImageView];
-     */
+    UIImageView *patternImageView = [[UIImageView alloc] initWithFrame:frame];
+    patternImageView.image = [[UIImage imageNamed:@"texture"] resizableImageWithCapInsets:UIEdgeInsetsZero];
+    [customPickerView addSubview:patternImageView];
     
-    CGRect labelFrame = CGRectMake(0.0, 6.0, 292.0, 35.0);
-    [_pickerViewLabel setFrame:labelFrame];
-    [_pickerViewLabel setTag:1];
-    [_pickerViewLabel setTextAlignment:NSTextAlignmentCenter];
-    [_pickerViewLabel setBackgroundColor:[UIColor clearColor]];
-    //[_pickerViewLabel setFont:];
-    [_pickerViewLabel setTextColor:[UIColor blackColor]];
-    [_pickerViewLabelView addSubview:_pickerViewLabel];
+    
+    CGRect labelFrame = CGRectMake(0.0, 12.0, 292.0, 35.0);
+    pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
+    [pickerViewLabel setTag:1];
+    [pickerViewLabel setTextAlignment:NSTextAlignmentCenter];
+    [pickerViewLabel setBackgroundColor:[UIColor clearColor]];
+   // [countryNameLabel setFont:[FifaTheme condensedBigFont]];
+   // [countryNameLabel setTextColor:[FifaTheme budwiserBlueColor]];
+    [customPickerView addSubview:pickerViewLabel];
   } else{
     
-    for (UIView *view in _pickerViewLabelView.subviews) {
+    for (UIView *view in customPickerView.subviews) {
       if (view.tag == 1) {
-        _pickerViewLabel = (UILabel *)view;
+        pickerViewLabel = (UILabel *)view;
         break;
       }
     }
     
   }
   
-  [_pickerViewLabel setText: [[_pickerViewArray objectAtIndex:row] uppercaseString]];
+  [pickerViewLabel setText: [[_pickerViewArray objectAtIndex:row] uppercaseString]];
   
-  return _pickerViewLabelView;
+  return customPickerView;
   
 }
-
-
-
+*/
 
 
 @end

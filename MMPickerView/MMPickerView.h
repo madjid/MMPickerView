@@ -12,14 +12,12 @@
 
 @property (nonatomic, strong) UILabel *pickerViewLabel;
 @property (nonatomic, strong) UIView *pickerViewLabelView;
-@property (nonatomic, strong) UIView *pickerContainerView; //Container for endast picker
-@property (nonatomic, strong) UIView *backgroundView;
-@property (nonatomic, strong) UIView *pickerViewContainerView; // Container for hela
+@property (nonatomic, strong) UIView *pickerContainerView; 
+@property (nonatomic, strong) UIView *pickerViewContainerView; 
 @property (nonatomic, strong) UIView *pickerTopBarView;
 @property (nonatomic, strong) UIImageView *pickerTopBarImageView;
 @property (nonatomic, strong) UIButton *pickerDoneButton;
 @property (nonatomic, strong) UIPickerView *pickerView;
-
 @property (nonatomic, strong) NSArray *pickerViewArray;
 
 
@@ -29,6 +27,6 @@
 
 +(void)dismiss;
 
-+(void)removeFromView: (UIView *)view;
++(void)dismissfromView;
 
 @end

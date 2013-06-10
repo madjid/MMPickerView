@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		02A9CD4117618A6200301653 /* MMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A9CD3F17618A6200301653 /* MMTestViewController.m */; };
 		02A9CD4217618A6200301653 /* MMTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A9CD4017618A6200301653 /* MMTestViewController.xib */; };
+		02A9CD451761E6F000301653 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A9CD431761E6EF00301653 /* texture.png */; };
+		02A9CD461761E6F000301653 /* texture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A9CD441761E6F000301653 /* texture@2x.png */; };
 		02D8FC53175F272000DE34E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC52175F272000DE34E6 /* UIKit.framework */; };
 		02D8FC55175F272000DE34E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC54175F272000DE34E6 /* Foundation.framework */; };
 		02D8FC57175F272000DE34E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC56175F272000DE34E6 /* CoreGraphics.framework */; };
@@ -27,6 +29,8 @@
 		02A9CD3E17618A6200301653 /* MMTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTestViewController.h; sourceTree = "<group>"; };
 		02A9CD3F17618A6200301653 /* MMTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTestViewController.m; sourceTree = "<group>"; };
 		02A9CD4017618A6200301653 /* MMTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MMTestViewController.xib; sourceTree = "<group>"; };
+		02A9CD431761E6EF00301653 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
+		02A9CD441761E6F000301653 /* texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture@2x.png"; sourceTree = "<group>"; };
 		02D8FC4F175F272000DE34E6 /* MMPickerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMPickerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D8FC52175F272000DE34E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		02D8FC54175F272000DE34E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,6 +105,8 @@
 				02A9CD3E17618A6200301653 /* MMTestViewController.h */,
 				02A9CD3F17618A6200301653 /* MMTestViewController.m */,
 				02A9CD4017618A6200301653 /* MMTestViewController.xib */,
+				02A9CD431761E6EF00301653 /* texture.png */,
+				02A9CD441761E6F000301653 /* texture@2x.png */,
 				02D8FC59175F272000DE34E6 /* Supporting Files */,
 			);
 			path = MMPickerView;
@@ -178,6 +184,8 @@
 				02D8FC69175F272000DE34E6 /* Default-568h@2x.png in Resources */,
 				02D8FC6F175F272000DE34E6 /* MMViewController.xib in Resources */,
 				02A9CD4217618A6200301653 /* MMTestViewController.xib in Resources */,
+				02A9CD451761E6F000301653 /* texture.png in Resources */,
+				02A9CD461761E6F000301653 /* texture@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
