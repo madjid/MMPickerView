@@ -36,40 +36,38 @@
   [view addSubview:[self sharedView]];
 }
 
-+(void)showInView:(UIView *)view withArray:(NSArray *)array completion:(void (^)(void))completion{
++(void)showInView:(UIView *)view withArray:(NSArray *)array completion:(void (^)(NSString *))completion{
   [[self sharedView] initializePickerViewInView:view withArray:array];
   [[self sharedView] setPickerHidden:NO];
-  
+  [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
-  
-  completion();
-
 }
 
 
 #pragma mark - Dismiss Methods
-
+/*
 +(void)dismiss{
   [[self sharedView] setPickerHidden:YES callBack:^{
     
     NSLog(@"CALLBACK METHOD");
   }];
+}*/
+
++(void)dismissWithCompletion:(void (^)(NSString *))completion{
+  [[self sharedView] setPickerHidden:YES callBack:completion];
 }
 
-+(void)dismissWithCompletion:(void (^)(void))completion{
-  [[self sharedView] setPickerHidden:YES];
-  
-  completion();
-}
 
 
 -(void)dismiss{
- [MMPickerView dismiss];
+ [MMPickerView dismissWithCompletion:self.onDismissCompletion];
 }
 
 +(void)removePickerView{
   [[self sharedView] removeFromSuperview];
 }
+
+
 
 #pragma mark - Show/hide methods
 
@@ -93,7 +91,6 @@
                    } completion:^(BOOL completed) {
                      if (completed && hidden) {
                        [MMPickerView removePickerView];
-                        NSLog(@"%@",[self pickerViewChosenString]);
                      }
    
                    }];
@@ -101,7 +98,7 @@
 }
 
 
--(void)setPickerHidden: (BOOL)hidden callBack: (void(^)(void))callBack; {
+-(void)setPickerHidden: (BOOL)hidden callBack: (void(^)(NSString *))callBack; {
   
   [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
                    animations:^{
@@ -122,7 +119,7 @@
 
                      if(completed && hidden){
                        [MMPickerView removePickerView];
-                       callBack();
+                       callBack(_pickerViewChosenString);
                      
                      }
                      
@@ -177,15 +174,6 @@
   [_pickerContainerView addSubview:_pickerView];
   
   [_pickerContainerView setTransform:CGAffineTransformMakeTranslation(0.0, CGRectGetHeight(_pickerContainerView.frame))];
-  
-}
-
-+(NSString *)pickerViewChosenString{
-  return [MMPickerView pickerViewChosenString];
-}
-
--(NSString *)pickerViewChosenString{
-  return _pickerViewChosenString;
 }
 
 
@@ -210,7 +198,6 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
   _pickerViewChosenString = [_pickerViewArray objectAtIndex:row];
-  
 }
 
 

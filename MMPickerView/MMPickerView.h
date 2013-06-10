@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface MMPickerView : UIView  <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) UILabel *pickerViewLabel;
@@ -20,20 +21,17 @@
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
 @property (nonatomic, strong) NSString *pickerViewChosenString;
-
+@property (copy) void (^onDismissCompletion)(NSString *);
 
 +(void)showInView: (UIView *)view
         withArray: (NSArray *)array;
 
 +(void)showInView: (UIView *)view
         withArray: (NSArray *)array
-        completion: (void(^)(void))completion;
+       completion: (void(^)(NSString *pickerViewLabelString))completion;
 
-+(void)dismiss;
+//+(void)dismiss;
 
-+(void)dismissWithCompletion: (void(^)(void))completion;;
-
-
-+(NSString *)pickerViewChosenString;
++(void)dismissWithCompletion: (void(^)(NSString *))completion;
 
 @end
