@@ -24,13 +24,8 @@
 @property (copy) void (^onDismissCompletion)(NSString *);
 
 +(void)showInView: (UIView *)view
-        withArray: (NSArray *)array;
-
-+(void)showInView: (UIView *)view
         withArray: (NSArray *)array
-       completion: (void(^)(NSString *pickerViewLabelString))completion;
-
-//+(void)dismiss;
+       completion: (void(^)(NSString *pickerLabelString))completion;
 
 +(void)dismissWithCompletion: (void(^)(NSString *))completion;
 

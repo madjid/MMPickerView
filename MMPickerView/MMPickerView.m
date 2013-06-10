@@ -28,36 +28,18 @@
 
 #pragma mark - Show Methods
 
-+(void)showInView:(UIView *)view
-        withArray:(NSArray *)array{
-  [[self sharedView] initializePickerViewInView:view withArray:array];
-  [[self sharedView] setPickerHidden:NO];
-
-  [view addSubview:[self sharedView]];
-}
-
 +(void)showInView:(UIView *)view withArray:(NSArray *)array completion:(void (^)(NSString *))completion{
   [[self sharedView] initializePickerViewInView:view withArray:array];
-  [[self sharedView] setPickerHidden:NO];
+  [[self sharedView] setPickerHidden:NO callBack:nil];
   [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
 }
 
-
 #pragma mark - Dismiss Methods
-/*
-+(void)dismiss{
-  [[self sharedView] setPickerHidden:YES callBack:^{
-    
-    NSLog(@"CALLBACK METHOD");
-  }];
-}*/
 
 +(void)dismissWithCompletion:(void (^)(NSString *))completion{
   [[self sharedView] setPickerHidden:YES callBack:completion];
 }
-
-
 
 -(void)dismiss{
  [MMPickerView dismissWithCompletion:self.onDismissCompletion];
@@ -67,36 +49,7 @@
   [[self sharedView] removeFromSuperview];
 }
 
-
-
-#pragma mark - Show/hide methods
-
--(void)setPickerHidden: (BOOL)hidden{
-  
-  [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut
-                   animations:^{
-                     
-                     if (hidden) {
-                       
-                       [_pickerViewContainerView setAlpha:0.0];
-                       [_pickerContainerView setTransform:CGAffineTransformMakeTranslation(0.0, CGRectGetHeight(_pickerContainerView.frame))];
-                       
-                     } else {
-                       
-                       [_pickerViewContainerView setAlpha:1.0];
-                       [_pickerContainerView setTransform:CGAffineTransformIdentity];
-                       
-                     }
-                     
-                   } completion:^(BOOL completed) {
-                     if (completed && hidden) {
-                       [MMPickerView removePickerView];
-                     }
-   
-                   }];
-  
-}
-
+#pragma mark - Show/hide PickerView
 
 -(void)setPickerHidden: (BOOL)hidden callBack: (void(^)(NSString *))callBack; {
   
@@ -120,9 +73,7 @@
                      if(completed && hidden){
                        [MMPickerView removePickerView];
                        callBack(_pickerViewChosenString);
-                     
                      }
-                     
                    }];
 
 }
