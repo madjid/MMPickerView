@@ -25,6 +25,10 @@
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
 @property (nonatomic, strong) NSString *pickerViewChosenString;
+
+@property (nonatomic, strong) UIColor *pickerViewTextColor;
+@property (nonatomic, strong) UIFont *pickerViewFont;
+
 @property (copy) void (^onDismissCompletion)(NSString *);
 
 +(void)showInView: (UIView *)view
@@ -42,12 +46,12 @@
 
 +(void)showWithCustomDesignInView: (UIView *)view
                         withArray: (NSArray *)array
-              withBackgroundColor:(UIColor *)backgroundColor
-                    withTextColor:(UIColor *)textColor
-//                       withFont:(UIFont *)font
-       withToolbarBackgroundColor:(UIColor *)toolbarBackgroundColor
-              withButtonTextColor:(UIColor *)buttonTextColor
-        withButtonBackgroundColor:(UIColor *)buttonBackgroundColor
+              withBackgroundColor: (UIColor *)backgroundColor
+                    withTextColor: (UIColor *)textColor
+       withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
+              withButtonTextColor: (UIColor *)buttonTextColor
+        withButtonBackgroundColor: (UIColor *)buttonBackgroundColor
+                         withFont: (UIFont *)font
                        completion: (void(^)(NSString *pickerLabelString))completion;
 
 

@@ -29,21 +29,25 @@
 #pragma mark - Show Methods
 
 +(void)showInView:(UIView *)view withArray:(NSArray *)array completion:(void (^)(NSString *))completion{
-  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:nil];
+  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonTextColor:nil withButtonBackgroundColor:nil withFont:nil];
   [[self sharedView] setPickerHidden:NO callBack:nil];
   [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
 }
 
 +(void)showInView:(UIView *)view withArray:(NSArray *)array withBackgroundColor:(UIColor *)backgroundColor completion:(void (^)(NSString *))completion{
-  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:backgroundColor];
+  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:backgroundColor withTextColor:nil withToolbarBackgroundColor:nil withButtonTextColor:nil withButtonBackgroundColor:nil withFont:nil];
   [[self sharedView] setPickerHidden:NO callBack:nil];
   [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
 }
 
-
-
++(void)showWithCustomDesignInView:(UIView *)view withArray:(NSArray *)array withBackgroundColor:(UIColor *)backgroundColor withTextColor:(UIColor *)textColor withToolbarBackgroundColor:(UIColor *)toolbarBackgroundColor withButtonTextColor:(UIColor *)buttonTextColor withButtonBackgroundColor:(UIColor *)buttonBackgroundColor withFont:(UIFont *)font  completion:(void (^)(NSString *))completion{
+  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:backgroundColor withTextColor: textColor withToolbarBackgroundColor:toolbarBackgroundColor withButtonTextColor:buttonTextColor withButtonBackgroundColor:buttonBackgroundColor withFont:font];
+  [[self sharedView] setPickerHidden:NO callBack:nil];
+  [self sharedView].onDismissCompletion = completion;
+  [view addSubview:[self sharedView]];
+}
 
 
 
@@ -94,7 +98,13 @@
 
 -(void)initializePickerViewInView: (UIView *)view
                         withArray: (NSArray *)array
-                        withBackgroundColor: (UIColor *)color{
+              withBackgroundColor: (UIColor *)pickerViewBackgroundColor
+                    withTextColor: (UIColor *)pickerViewTextColor
+       withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
+              withButtonTextColor: (UIColor *)buttonTextColor
+        withButtonBackgroundColor: (UIColor *)buttonBackgroundColor
+                         withFont: (UIFont *)font {
+  
   _pickerViewArray = array;
   
   [self setFrame: view.bounds];
@@ -108,11 +118,40 @@
   //PickerView Container with top bar
   _pickerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, _pickerViewContainerView.bounds.size.height - 260.0, 320.0, 260.0)];
   
-  if (color==nil) {
-    color = [UIColor blackColor];
+  
+  //Default Color Values (if colors == nil)
+  
+  //PickerViewBackgroundColor - White
+  if (pickerViewBackgroundColor==nil) {
+    pickerViewBackgroundColor = [UIColor whiteColor];
+  }
+ 
+  //PickerViewTextColor - Black
+  if (pickerViewTextColor==nil) {
+    pickerViewTextColor = [UIColor blackColor];
+  }
+    _pickerViewTextColor = pickerViewTextColor;
+  
+  //ToolbarBackgroundColor - Black
+  if (pickerViewTextColor==nil) {
+    pickerViewTextColor = [UIColor blackColor];
   }
   
-  _pickerContainerView.backgroundColor = color;
+  //ButtonTextColor - Blue
+  if (buttonTextColor==nil) {
+    buttonTextColor = [UIColor colorWithRed:0.000 green:0.486 blue:0.976 alpha:1];
+  }
+  
+  if (font==nil) {
+    _pickerViewFont = [UIFont systemFontOfSize:22];
+  }
+  _pickerViewFont = font;
+  
+  //ButtonBackgroundColor - Clear Color
+  if (buttonBackgroundColor==nil) {
+    buttonBackgroundColor = [UIColor clearColor];
+  }
+  _pickerContainerView.backgroundColor = pickerViewBackgroundColor;
   [_pickerViewContainerView addSubview:_pickerContainerView];
   
 
@@ -126,13 +165,13 @@
   
   _pickerViewToolBar = [[UIToolbar alloc] initWithFrame:_pickerTopBarView.frame];
   [_pickerContainerView addSubview:_pickerViewToolBar];
-  [_pickerViewToolBar setBackgroundColor:[UIColor whiteColor]];
+  [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
   
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   
   _pickerViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss)];
   _pickerViewToolBar.items = @[flexibleSpace, _pickerViewBarButtonItem];
-  //[[UIBarButtonItem appearance] setTintColor:[UIColor greenColor]];
+  [[UIBarButtonItem appearance] setTintColor:buttonTextColor];
   
   /*
   _pickerDoneButton = [[UIButton alloc] initWithFrame:CGRectMake(_pickerContainerView.frame.size.width - 80.0, 10.0, 60.0, 24.0)];
@@ -197,18 +236,20 @@
     
     CGRect frame = CGRectMake(0.0, 0.0, 292.0, 44.0);
     customPickerView = [[UIView alloc] initWithFrame: frame];
-    /*
+    
     UIImageView *patternImageView = [[UIImageView alloc] initWithFrame:frame];
     patternImageView.image = [[UIImage imageNamed:@"texture"] resizableImageWithCapInsets:UIEdgeInsetsZero];
     [customPickerView addSubview:patternImageView];
-    */
     
-    CGRect labelFrame = CGRectMake(0.0, 6.0, 292.0, 35.0);
+    
+    CGRect labelFrame = CGRectMake(0.0, 3.0, 292.0, 35.0);
     pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
     [pickerViewLabel setTag:1];
     [pickerViewLabel setTextAlignment:NSTextAlignmentCenter];
     [pickerViewLabel setBackgroundColor:[UIColor clearColor]];
-    [pickerViewLabel setTextColor:[UIColor whiteColor]];
+    [pickerViewLabel setTextColor:_pickerViewTextColor];
+    [pickerViewLabel setFont:_pickerViewFont];
+     
    // [countryNameLabel setFont:[FifaTheme condensedBigFont]];
    // [countryNameLabel setTextColor:[FifaTheme budwiserBlueColor]];
     [customPickerView addSubview:pickerViewLabel];
@@ -223,7 +264,7 @@
     
   }
   
-  [pickerViewLabel setText: [[_pickerViewArray objectAtIndex:row] uppercaseString]];
+  [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
   
   return customPickerView;
   
