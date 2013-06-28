@@ -36,9 +36,14 @@
 }
 
 - (IBAction)showPickerViewButtonPressed:(id)sender {
-  [MMPickerView showInView:self.view withArray:@[@"Hej", @"Test"] completion:^(NSString *string) {
-    _label.text = string;
   
+  NSArray *countriesArray = @[@"Australia (AUD)", @"China (CNY)", @"France (EUR)",
+                         @"Great Britain (GBP)", @"Japan (JPY)"];
+
+  [MMPickerView showInView:self.view withArray:countriesArray withBackgroundColor:[UIColor blackColor] completion:^(NSString *pickerLabelString) {
+    _label.text = pickerLabelString;
   }];
+
+  
 }
 @end
