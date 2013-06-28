@@ -28,25 +28,33 @@
 
 #pragma mark - Show Methods
 
-+(void)showInView:(UIView *)view withArray:(NSArray *)array completion:(void (^)(NSString *))completion{
-  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonTextColor:nil withButtonBackgroundColor:nil withFont:nil];
++(void)showInView:(UIView *)view
+        withArray:(NSArray *)array
+       completion:(void (^)(NSString *))completion{
+  
+  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonTextColor:nil withButtonBackgroundColor:nil withFont:nil withYValue:3.0];
   [[self sharedView] setPickerHidden:NO callBack:nil];
   [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
+
 }
 
-+(void)showInView:(UIView *)view withArray:(NSArray *)array withBackgroundColor:(UIColor *)backgroundColor completion:(void (^)(NSString *))completion{
-  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:backgroundColor withTextColor:nil withToolbarBackgroundColor:nil withButtonTextColor:nil withButtonBackgroundColor:nil withFont:nil];
++(void)showWithCustomDesignInView: (UIView *)view
+                        withArray: (NSArray *)array
+              withBackgroundColor: (UIColor *)backgroundColor
+                    withTextColor: (UIColor *)textColor
+       withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
+              withButtonTextColor: (UIColor *)buttonTextColor
+        withButtonBackgroundColor: (UIColor *)buttonBackgroundColor
+                         withFont: (UIFont *)font
+                     withYValue:(CGFloat)yValue
+                       completion: (void (^)(NSString *))completion{
+  
+  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:backgroundColor withTextColor: textColor withToolbarBackgroundColor:toolbarBackgroundColor withButtonTextColor:buttonTextColor withButtonBackgroundColor:buttonBackgroundColor withFont:font withYValue:yValue];
   [[self sharedView] setPickerHidden:NO callBack:nil];
   [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
-}
 
-+(void)showWithCustomDesignInView:(UIView *)view withArray:(NSArray *)array withBackgroundColor:(UIColor *)backgroundColor withTextColor:(UIColor *)textColor withToolbarBackgroundColor:(UIColor *)toolbarBackgroundColor withButtonTextColor:(UIColor *)buttonTextColor withButtonBackgroundColor:(UIColor *)buttonBackgroundColor withFont:(UIFont *)font  completion:(void (^)(NSString *))completion{
-  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:backgroundColor withTextColor: textColor withToolbarBackgroundColor:toolbarBackgroundColor withButtonTextColor:buttonTextColor withButtonBackgroundColor:buttonBackgroundColor withFont:font];
-  [[self sharedView] setPickerHidden:NO callBack:nil];
-  [self sharedView].onDismissCompletion = completion;
-  [view addSubview:[self sharedView]];
 }
 
 
@@ -103,16 +111,18 @@
        withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
               withButtonTextColor: (UIColor *)buttonTextColor
         withButtonBackgroundColor: (UIColor *)buttonBackgroundColor
-                         withFont: (UIFont *)font {
+                         withFont: (UIFont *)font
+                       withYValue: (CGFloat )yValueFromTop{
   
   _pickerViewArray = array;
+  _yValueFromTop = yValueFromTop;
   
   [self setFrame: view.bounds];
   [self setBackgroundColor:[UIColor clearColor]];
   
   //Whole screen with PickerView and a dimmed background
   _pickerViewContainerView = [[UIView alloc] initWithFrame:view.bounds];
-  [_pickerViewContainerView setBackgroundColor:[UIColor colorWithWhite:0.687 alpha:0.5]];
+  [_pickerViewContainerView setBackgroundColor:[UIColor colorWithRed:0.412 green:0.412 blue:0.412 alpha:0.7]];
   [self addSubview:_pickerViewContainerView];
   
   //PickerView Container with top bar
@@ -237,12 +247,17 @@
     CGRect frame = CGRectMake(0.0, 0.0, 292.0, 44.0);
     customPickerView = [[UIView alloc] initWithFrame: frame];
     
-    UIImageView *patternImageView = [[UIImageView alloc] initWithFrame:frame];
-    patternImageView.image = [[UIImage imageNamed:@"texture"] resizableImageWithCapInsets:UIEdgeInsetsZero];
-    [customPickerView addSubview:patternImageView];
+  //  UIImageView *patternImageView = [[UIImageView alloc] initWithFrame:frame];
+ //   patternImageView.image = [[UIImage imageNamed:@"texture"] resizableImageWithCapInsets:UIEdgeInsetsZero];
+//    [customPickerView addSubview:patternImageView];
     
+    /*
+    if (_yValueFromTop == 0.0f) {
+      _yValueFromTop = 3.0;
+    }
+     */
     
-    CGRect labelFrame = CGRectMake(0.0, 3.0, 292.0, 35.0);
+    CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 35.0);
     pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
     [pickerViewLabel setTag:1];
     [pickerViewLabel setTextAlignment:NSTextAlignmentCenter];
@@ -267,14 +282,8 @@
   [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
   
   return customPickerView;
-  
+
 }
 
-#pragma mark - Customization
-/*
-+(UIFont *)setFont:(UIFont *)font{
-  return font;
-}
-*/
 
 @end

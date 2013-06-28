@@ -38,19 +38,21 @@
 - (IBAction)showPickerViewButtonPressed:(id)sender {
   
   NSArray *countriesArray = @[@"Australia (AUD)", @"China (CNY)", @"France (EUR)",
-                         @"Great Britain (GBP)", @"Japan (JPY)"];
+                              @"Great Britain (GBP)", @"Japan (JPY)", @"Iran (IR)", @"Sweden (SWE)", @"Swizerland (SW)",
+                              @"Albania (AL)", @"Denmark (DK)"];
 /*
-  [MMPickerView showInView:self.view withArray:countriesArray withBackgroundColor:[UIColor blackColor] completion:^(NSString *pickerLabelString) {
+  [MMPickerView showInView:self.view withArray:countriesArray completion:^(NSString *pickerLabelString) {
     _label.text = pickerLabelString;
   }];
-*/
+  */
+  
   /*
   [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:[UIColor orangeColor] withTextColor:[UIColor brownColor] withToolbarBackgroundColor:[UIColor grayColor] withButtonTextColor:[UIColor blackColor] withButtonBackgroundColor:[UIColor blackColor] completion:^(NSString *pickerLabelString) {
     _label.text = pickerLabelString;
   }];
   */
   
-  [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonTextColor:nil withButtonBackgroundColor:nil withFont:[UIFont fontWithName:@"Helvetica-Bold" size:26.0] completion:^(NSString *pickerLabelString) {
+  [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonTextColor:nil withButtonBackgroundColor:nil withFont:[UIFont fontWithName:@"Helvetica-Bold" size:22.0] withYValue:3.0 completion:^(NSString *pickerLabelString) {
     _label.text = pickerLabelString;
   }];
   
