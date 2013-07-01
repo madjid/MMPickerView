@@ -26,6 +26,8 @@
 @property (nonatomic, strong) UIColor *pickerViewTextColor;
 @property (nonatomic, strong) UIFont *pickerViewFont;
 @property (nonatomic, assign) CGFloat yValueFromTop;
+@property (nonatomic, assign) NSInteger selectedRow;
+
 @property (copy) void (^onDismissCompletion)(NSString *);
 
 +(void)showInView: (UIView *)view
@@ -40,12 +42,11 @@
               withBackgroundColor: (UIColor *)backgroundColor
                     withTextColor: (UIColor *)textColor
        withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
-              withButtonTextColor: (UIColor *)buttonTextColor
-        withButtonBackgroundColor: (UIColor *)buttonBackgroundColor
+                  withButtonColor: (UIColor *)buttonColor
                          withFont: (UIFont *)font
                        withYValue: (CGFloat) yValue
                        completion: (void(^)(NSString *pickerLabelString))completion;
 
-
+//       withToolbarBackgroundImage: (UIImage *)toolbarBackgroundImage
 
 @end
