@@ -22,13 +22,17 @@
 @property (nonatomic, strong) UIButton *pickerDoneButton;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
-@property (nonatomic, strong) NSString *pickerViewChosenString;
+//@property (nonatomic, strong) NSString *pickerViewChosenString;
 @property (nonatomic, strong) UIColor *pickerViewTextColor;
 @property (nonatomic, strong) UIFont *pickerViewFont;
 @property (nonatomic, assign) CGFloat yValueFromTop;
-@property (nonatomic, assign) NSInteger selectedRow;
+@property (nonatomic, assign) NSInteger previouslySelectedRow;
+//@property (nonatomic, strong) id pickerViewChosenObject;
 
 @property (copy) void (^onDismissCompletion)(NSString *);
+
+@property (copy) NSString *(^objectToStringConverter)(id object);
+
 
 +(void)showInView: (UIView *)view
         withArray: (NSArray *)array
@@ -48,6 +52,13 @@
                        completion: (void(^)(NSString *pickerLabelString))completion;
 
 //       withToolbarBackgroundImage: (UIImage *)toolbarBackgroundImage
+
+
++(void)showInView: (UIView *)view
+        withArray: (NSArray *)array
+withObjectToStringConverter: (NSString *(^)(id object))converter
+       completion: (void(^)(id chosenObject))completion;
+
 
 /*
 -(void)logObjects:(NSArray *)objects
@@ -75,11 +86,5 @@ withStringConverter:^(id object) {
 }
 */
 
-//double (^multiplyTwoValues)(double, double);
-
-+(void)showInView: (UIView *)view
-        withArray: (NSArray *)array
-  withObjectToStringConverter: (NSString *(^)(id object))converter
-       completion: (void(^)(id chosenObject))completion;
 
 @end

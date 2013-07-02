@@ -36,17 +36,22 @@
 }
 
 - (IBAction)showPickerViewButtonPressed:(id)sender {
-  
+ 
   NSArray *countriesArray = @[@"Australia (AUD)", @"China (CNY)", @"France (EUR)",
                               @"Great Britain (GBP)", @"Japan (JPY)", @"Iran (IR)", @"Sweden (SWE)", @"Swizerland (SW)",
                               @"Albania (AL)", @"Denmark (DK)"];
-/*
+
+  NSArray *numbersArray = @[@12, @11, @123, @22, @5];
+ 
+  NSArray *objectArray = [NSArray arrayWithObjects: @"hej", @14, @13.3,  nil];
+  
+  /*
   [MMPickerView showInView:self.view withArray:countriesArray completion:^(NSString *pickerLabelString) {
     _label.text = pickerLabelString;
   }];
   */
   
-  
+  /*
   [MMPickerView showWithCustomDesignInView:self.view
                                  withArray:countriesArray 
                        withBackgroundColor:[UIColor blackColor]
@@ -59,13 +64,23 @@
     _label.text = pickerLabelString;
   }];
   
-
-  
+*/
   /*
+  [MMPickerView showInView:self.view withArray:objectArray withObjectToStringConverter:^NSString *(id object) {
+    
+    return [[object description] stringByAppendingString:@" nice"];
+    
+  } completion:^(id chosenObject) {
+    
+    _label.text = [chosenObject description];
+    
+  }];
+  */
+  
   [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonColor:nil withFont:[UIFont fontWithName:@"Helvetica-Bold" size:22.0] withYValue:3.0 completion:^(NSString *pickerLabelString) {
     _label.text = pickerLabelString;
   }];
-  */
+  
   
 }
 @end

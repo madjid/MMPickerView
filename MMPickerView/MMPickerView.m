@@ -58,6 +58,9 @@
 
 +(void)showInView:(UIView *)view withArray:(NSArray *)array withObjectToStringConverter:(NSString *(^)(id))converter completion:(void (^)(id))completion {
   
+  [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonColor:nil withFont:nil withYValue:0];
+  
+  [self sharedView].objectToStringConverter = converter;
   [[self sharedView] setPickerHidden:NO callBack:nil];
   [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
@@ -102,7 +105,9 @@
 
                      if(completed && hidden){
                        [MMPickerView removePickerView];
-                       callBack(_pickerViewChosenString);
+                       //callBack(_pickerViewChosenString);
+                     
+                       callBack([[self selectedObject] description]);
                      }
                    }];
 
@@ -197,17 +202,12 @@
   NSLog(@"%f",iOSVersion);
   
   if (iOSVersion < 7.0) {
-    
     _pickerViewToolBar.tintColor = toolbarBackgroundColor;
    // [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
-    
   }else{
-    
    // _pickerViewToolBar.tintColor = toolbarBackgroundColor;
     _pickerViewToolBar.barTintColor = toolbarBackgroundColor;
   }
-  
-  
   
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   
@@ -216,8 +216,6 @@
   [[UIBarButtonItem appearance] setTintColor:buttonColor];
   
   //[_pickerViewBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Helvetica-Neue" size:23.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
-
-  
   /*
   _pickerDoneButton = [[UIButton alloc] initWithFrame:CGRectMake(_pickerContainerView.frame.size.width - 80.0, 10.0, 60.0, 24.0)];
   [_pickerDoneButton setTitle:@"Done" forState:UIControlStateNormal];
@@ -235,7 +233,12 @@
   //[self.pickerViewContainerView setAlpha:0.0];
   [_pickerContainerView setTransform:CGAffineTransformMakeTranslation(0.0, CGRectGetHeight(_pickerContainerView.frame))];
 
-  [_pickerView selectRow:_selectedRow inComponent:0 animated:YES];
+  //[_pickerView selectRow:_previouslySelectedRow inComponent:0 animated:YES];
+}
+
+
+- (id)selectedObject {
+  return [_pickerViewArray objectAtIndex: [self.pickerView selectedRowInComponent:0]];
 }
 
 
@@ -252,16 +255,28 @@
 - (NSString *)pickerView: (UIPickerView *)pickerView
              titleForRow: (NSInteger)row
             forComponent: (NSInteger)component {
-  return [_pickerViewArray objectAtIndex:row];
+//  return [_pickerViewArray objectAtIndex:row];
+
+  
+//  if ([self selectedObject]==nil) {
+//    return [_pickerViewArray objectAtIndex:row];
+//  } else{
+    return (self.objectToStringConverter ([_pickerViewArray objectAtIndex:row]));
+//  }
+  
+//  return (self.objectToStringConverter ([_pickerViewArray objectAtIndex:row]));
 }
 
 
 #pragma mark - UIPickerViewDelegate
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-  _pickerViewChosenString = [_pickerViewArray objectAtIndex:row];
-  _selectedRow = row;
-  self.onDismissCompletion (_pickerViewChosenString);
+  //_pickerViewChosenString = [_pickerViewArray objectAtIndex:row];
+  //self.onDismissCompletion (_pickerViewChosenString);
+  
+  _previouslySelectedRow = row;
+  
+  self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
 }
 
 
@@ -311,7 +326,11 @@
     
   }
   
-  [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
+ // [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
+  
+  
+  [pickerViewLabel setText:(self.objectToStringConverter ([_pickerViewArray objectAtIndex:row]))];
+
   
   return customPickerView;
 
