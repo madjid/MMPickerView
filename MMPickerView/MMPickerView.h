@@ -44,9 +44,42 @@
        withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
                   withButtonColor: (UIColor *)buttonColor
                          withFont: (UIFont *)font
-                       withYValue: (CGFloat) yValue
+                       withYValue: (CGFloat )yValue
                        completion: (void(^)(NSString *pickerLabelString))completion;
 
 //       withToolbarBackgroundImage: (UIImage *)toolbarBackgroundImage
+
+/*
+-(void)logObjects:(NSArray *)objects
+withStringConverter:(NSString* (^)(id object))converter {
+  
+  for (id object in objects) {
+    NSLog(@"%@", converter(object));
+  }
+  
+  
+}
+
+-(void)myAwesomeMethod {
+  
+  NSArray *objects;
+  
+  [self logObjects:objects
+withStringConverter:^(id object) {
+  
+  return [object name];
+  
+}];
+  
+  
+}
+*/
+
+//double (^multiplyTwoValues)(double, double);
+
++(void)showInView: (UIView *)view
+        withArray: (NSArray *)array
+  withObjectToStringConverter: (NSString *(^)(id object))converter
+       completion: (void(^)(id chosenObject))completion;
 
 @end

@@ -46,7 +46,7 @@
        withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
                   withButtonColor: (UIColor *)buttonColor
                          withFont: (UIFont *)font
-                     withYValue:(CGFloat)yValue
+                       withYValue: (CGFloat)yValue
                        completion: (void (^)(NSString *))completion{
   
   [[self sharedView] initializePickerViewInView:view withArray:array withBackgroundColor:backgroundColor withTextColor: textColor withToolbarBackgroundColor: toolbarBackgroundColor withButtonColor:buttonColor withFont:font withYValue:yValue];
@@ -56,6 +56,13 @@
 
 }
 
++(void)showInView:(UIView *)view withArray:(NSArray *)array withObjectToStringConverter:(NSString *(^)(id))converter completion:(void (^)(id))completion {
+  
+  [[self sharedView] setPickerHidden:NO callBack:nil];
+  [self sharedView].onDismissCompletion = completion;
+  [view addSubview:[self sharedView]];
+  
+}
 
 
 #pragma mark - Dismiss Methods
@@ -187,21 +194,17 @@
 
   
   CGFloat iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-  
   NSLog(@"%f",iOSVersion);
   
   if (iOSVersion < 7.0) {
     
     _pickerViewToolBar.tintColor = toolbarBackgroundColor;
    // [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
-
-    NSLog(@"Mindre an ios7");
     
   }else{
     
    // _pickerViewToolBar.tintColor = toolbarBackgroundColor;
     _pickerViewToolBar.barTintColor = toolbarBackgroundColor;
-    NSLog(@"ios7");
   }
   
   
@@ -212,6 +215,8 @@
   _pickerViewToolBar.items = @[flexibleSpace, _pickerViewBarButtonItem];
   [[UIBarButtonItem appearance] setTintColor:buttonColor];
   
+  //[_pickerViewBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Helvetica-Neue" size:23.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
+
   
   /*
   _pickerDoneButton = [[UIButton alloc] initWithFrame:CGRectMake(_pickerContainerView.frame.size.width - 80.0, 10.0, 60.0, 24.0)];

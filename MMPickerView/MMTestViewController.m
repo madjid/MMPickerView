@@ -47,9 +47,19 @@
   */
   
   
-  [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:[UIColor blackColor] withTextColor:[UIColor whiteColor] withToolbarBackgroundColor:[UIColor blackColor] withButtonColor:[UIColor grayColor] withFont:[UIFont fontWithName:@"Helvetiva-Neue" size:22.0] withYValue:0 completion:^(NSString *pickerLabelString) {
+  [MMPickerView showWithCustomDesignInView:self.view
+                                 withArray:countriesArray 
+                       withBackgroundColor:[UIColor blackColor]
+                             withTextColor:[UIColor whiteColor]
+                withToolbarBackgroundColor:[UIColor blackColor]
+                           withButtonColor:[UIColor grayColor]
+                                  withFont:[UIFont fontWithName:@"Helvetiva-Neue" size:22.0]
+                                withYValue:0
+                                completion:^(NSString *pickerLabelString) {
     _label.text = pickerLabelString;
   }];
+  
+
   
   /*
   [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonColor:nil withFont:[UIFont fontWithName:@"Helvetica-Bold" size:22.0] withYValue:3.0 completion:^(NSString *pickerLabelString) {
