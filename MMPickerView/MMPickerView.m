@@ -275,8 +275,12 @@
   //self.onDismissCompletion (_pickerViewChosenString);
   
   _previouslySelectedRow = row;
-  
-  self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
+
+  if (self.objectToStringConverter == nil) {
+    self.onDismissCompletion ([_pickerViewArray objectAtIndex:row]);
+  } else{
+    self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
+  }
 }
 
 
@@ -328,9 +332,12 @@
   
  // [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
   
+  if (self.objectToStringConverter == nil){
+    [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
+  } else{
   
   [pickerViewLabel setText:(self.objectToStringConverter ([_pickerViewArray objectAtIndex:row]))];
-
+  }
   
   return customPickerView;
 

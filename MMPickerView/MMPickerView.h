@@ -22,15 +22,12 @@
 @property (nonatomic, strong) UIButton *pickerDoneButton;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSArray *pickerViewArray;
-//@property (nonatomic, strong) NSString *pickerViewChosenString;
 @property (nonatomic, strong) UIColor *pickerViewTextColor;
 @property (nonatomic, strong) UIFont *pickerViewFont;
 @property (nonatomic, assign) CGFloat yValueFromTop;
 @property (nonatomic, assign) NSInteger previouslySelectedRow;
-//@property (nonatomic, strong) id pickerViewChosenObject;
 
 @property (copy) void (^onDismissCompletion)(NSString *);
-
 @property (copy) NSString *(^objectToStringConverter)(id object);
 
 
