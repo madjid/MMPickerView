@@ -15,7 +15,7 @@ NSString * const buttonColor = @"buttonColor";
 NSString * const font = @"font";
 NSString * const yValue = @"yValueFromTop";
 
-@implementation MMPickerView
+@implementation MMPickerView 
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -99,14 +99,23 @@ NSString * const yValue = @"yValueFromTop";
 +(void)showInView:(UIView *)view withStrings:(NSArray *)strings withDesignOptions:(NSDictionary *)options completion:(void (^)(NSString *))completion{
   
   [[self sharedView] initializePickerViewInView:view withArray:strings withDesignOptions:options];
-  
-  //[[self sharedView] initializePickerViewInView:view withArray:strings withBackgroundColor:backgroundColor withTextColor: textColor withToolbarBackgroundColor: toolbarBackgroundColor withButtonColor:buttonColor withFont:font withYValue:yValue];
   [[self sharedView] setPickerHidden:NO callBack:nil];
   [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
   
   
 }
+
++(void)showInView:(UIView *)view withObjetcs:(NSArray *)objects withDesignOptions:(NSDictionary *)options withObjectToStringConverter:(NSString *(^)(id))converter completion:(void (^)(id))completion{
+  
+  [[self sharedView] initializePickerViewInView:view withArray:objects withDesignOptions:options];
+  [self sharedView].objectToStringConverter = converter;
+  [[self sharedView] setPickerHidden:NO callBack:nil];
+  [self sharedView].onDismissCompletion = completion;
+  [view addSubview:[self sharedView]];
+  
+}
+
 
 
 
@@ -177,6 +186,15 @@ NSString * const yValue = @"yValueFromTop";
   [_pickerViewContainerView setBackgroundColor: [UIColor colorWithRed:0.412 green:0.412 blue:0.412 alpha:0.7]];
   [self addSubview:_pickerViewContainerView];
   
+  /*
+  UIView *dimmedView = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, view.frame.size.width, _pickerViewContainerView.bounds.size.height  - 260.0)];
+  dimmedView.backgroundColor = [UIColor colorWithRed:0.412 green:0.412 blue:0.412 alpha:0.7];
+
+  
+  [_pickerViewContainerView addSubview:dimmedView];*/
+  
+  
+  
   //PickerView Container with top bar
   _pickerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, _pickerViewContainerView.bounds.size.height - 260.0, 320.0, 260.0)];
   
@@ -230,7 +248,7 @@ NSString * const yValue = @"yValueFromTop";
   //Top bar view
   _pickerTopBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, _pickerContainerView.frame.size.width, 44.0)];
   [_pickerContainerView addSubview:_pickerTopBarView];
-  [_pickerTopBarView setBackgroundColor:[UIColor blackColor]];
+  [_pickerTopBarView setBackgroundColor:[UIColor clearColor]];
   
   
   _pickerViewToolBar = [[UIToolbar alloc] initWithFrame:_pickerTopBarView.frame];
@@ -247,9 +265,11 @@ NSString * const yValue = @"yValueFromTop";
     _pickerViewToolBar.tintColor = toolbarBackgroundColor;
    // [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
   }else{
-   // _pickerViewToolBar.tintColor = toolbarBackgroundColor;
+    [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
+    //_pickerViewToolBar.tintColor = toolbarBackgroundColor;
     _pickerViewToolBar.barTintColor = toolbarBackgroundColor;
   }
+  _pickerViewToolBar.translucent = NO;
   
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   
@@ -286,20 +306,12 @@ NSString * const yValue = @"yValueFromTop";
   
   _pickerViewArray = array;
   UIColor *pickerViewBackgroundColor = [[UIColor alloc] initWithCGColor:[options[backgroundColor] CGColor]];
-  
-//  UIColor *pickerViewTextColor = [[UIColor alloc] initWithCGColor:[options[@"pickerViewTextColor"] CGColor]];
   UIColor *pickerViewTextColor = [[UIColor alloc] initWithCGColor:[options[textColor] CGColor]];
-  
   UIColor *toolbarBackgroundColor = [[UIColor alloc] initWithCGColor:[options[toolbarColor] CGColor]];
-  
   UIColor *buttonTextColor = [[UIColor alloc] initWithCGColor:[options[buttonColor] CGColor]];
-  
   UIFont *pickerViewFont = [[UIFont alloc] init];
-  
   pickerViewFont = options[font];
-  
   _yValueFromTop = [options[yValue] floatValue];
-
   
   [self setFrame: view.bounds];
   [self setBackgroundColor:[UIColor clearColor]];
@@ -378,8 +390,10 @@ NSString * const yValue = @"yValueFromTop";
     _pickerViewToolBar.tintColor = toolbarBackgroundColor;
     // [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
   }else{
-    // _pickerViewToolBar.tintColor = toolbarBackgroundColor;
-    _pickerViewToolBar.barTintColor = toolbarBackgroundColor;
+     [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
+
+ //    _pickerViewToolBar.tintColor = toolbarBackgroundColor;
+    //_pickerViewToolBar.barTintColor = toolbarBackgroundColor;
   }
   
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -484,7 +498,7 @@ NSString * const yValue = @"yValueFromTop";
     }
      
     
-    CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 35.0);
+    CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 44); // 35 before
     pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
     [pickerViewLabel setTag:1];
     [pickerViewLabel setTextAlignment:NSTextAlignmentCenter];

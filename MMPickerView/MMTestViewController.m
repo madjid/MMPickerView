@@ -87,25 +87,54 @@
    
   */
   
-  
-  [MMPickerView showInView:self.view
-               withStrings:countriesArray
-         withDesignOptions:@{backgroundColor: [UIColor redColor],
-                             textColor: [UIColor blueColor],
-                             toolbarColor: [UIColor blackColor],
-                             buttonColor : [UIColor blueColor],
-                             font : [UIFont systemFontOfSize:18],
-                             yValue:@3 }
-                completion:^(NSString *pickerLabelString) {
-                  _label.text = pickerLabelString;
-                }];
-  
-  
   /*
   [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonColor:nil withFont:[UIFont fontWithName:@"Helvetica-Bold" size:22.0] withYValue:3.0 completion:^(NSString *pickerLabelString) {
     _label.text = pickerLabelString;
   }];
   */
   
+  
+  //Nytt satt att gora det pa
+  
+  /*
+   [MMPickerView showInView:self.view
+   withStrings:countriesArray
+   withDesignOptions:@{backgroundColor: [UIColor whiteColor],
+   textColor: [UIColor blackColor],
+   toolbarColor: [UIColor whiteColor],
+   buttonColor : [UIColor blueColor],
+   font : [UIFont systemFontOfSize:18],
+   yValue:@3 }
+   completion:^(NSString *pickerLabelString) {
+   _label.text = pickerLabelString;
+   }];
+   */
+  /*
+  [MMPickerView showInView:self.view withObjetcs:objectArray
+         withDesignOptions:@{backgroundColor: [UIColor redColor],
+                             textColor: [UIColor blackColor],
+                             toolbarColor: [UIColor whiteColor],
+                             buttonColor : [UIColor blueColor],
+                             font : [UIFont systemFontOfSize:18],
+                             yValue: @3}
+withObjectToStringConverter:^NSString *(id object) {
+    return [object description];
+} completion:^(id chosenObject) {
+    _label.text = [chosenObject description];
+}];*/
+  
+  
+  [MMPickerView showInView:self.view withObjetcs:objectArray
+         withDesignOptions: nil
+withObjectToStringConverter:^NSString *(id object) {
+    return [object description];
+  } completion:^(id chosenObject) {
+    _label.text = [chosenObject description];
+  }];
+  
+ 
+  
 }
-@end
+
+  
+  @end

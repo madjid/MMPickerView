@@ -15,7 +15,7 @@ extern NSString * const buttonColor;
 extern NSString * const font;
 extern NSString * const yValue;
 
-@interface MMPickerView : UIView  <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface MMPickerView: UIView <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) UILabel *pickerViewLabel;
 @property (nonatomic, strong) UIView *pickerViewLabelView;
@@ -32,7 +32,6 @@ extern NSString * const yValue;
 @property (nonatomic, strong) UIFont *pickerViewFont;
 @property (nonatomic, assign) CGFloat yValueFromTop;
 @property (nonatomic, assign) NSInteger previouslySelectedRow;
-//@property (nonatomic, strong) NSDictionary *designOptionsDictionary;
 
 @property (copy) void (^onDismissCompletion)(NSString *);
 @property (copy) NSString *(^objectToStringConverter)(id object);
@@ -79,6 +78,13 @@ extern NSString * const yValue;
       withStrings: (NSArray *)strings
 withDesignOptions: (NSDictionary *)options
        completion: (void(^)(NSString *pickerLabelString))completion;
+
++(void)showInView: (UIView *)view
+      withObjetcs: (NSArray *)objects
+withDesignOptions: (NSDictionary *)options
+withObjectToStringConverter: (NSString *(^)(id object))converter
+       completion: (void(^)(id chosenObject))completion;
+
 
 
 /*
