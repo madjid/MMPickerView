@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 GG. All rights reserved.
 //
 
+
 #import "MMTestViewController.h"
 
 @interface MMTestViewController ()
@@ -65,22 +66,46 @@
   }];
   
 */
+  
   /*
-  [MMPickerView showInView:self.view withArray:objectArray withObjectToStringConverter:^NSString *(id object) {
+  [MMPickerView showInView:self.view withObjetcs:objectArray withObjectToStringConverter:^NSString *(id object) {
     
-    return [[object description] stringByAppendingString:@" nice"];
+    return [object description];
     
   } completion:^(id chosenObject) {
-    
     _label.text = [chosenObject description];
     
   }];
   */
+  /*
+   pickerViewBackgroundColor
+   pickerViewTextColor
+   toolbarBackgroundColor
+   buttonColor
+   font
+   yValueFromTop
+   
+  */
   
+  
+  [MMPickerView showInView:self.view
+               withStrings:countriesArray
+         withDesignOptions:@{backgroundColor: [UIColor redColor],
+                             textColor: [UIColor blueColor],
+                             toolbarColor: [UIColor blackColor],
+                             buttonColor : [UIColor blueColor],
+                             font : [UIFont systemFontOfSize:18],
+                             yValue:@3 }
+                completion:^(NSString *pickerLabelString) {
+                  _label.text = pickerLabelString;
+                }];
+  
+  
+  /*
   [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonColor:nil withFont:[UIFont fontWithName:@"Helvetica-Bold" size:22.0] withYValue:3.0 completion:^(NSString *pickerLabelString) {
     _label.text = pickerLabelString;
   }];
-  
+  */
   
 }
 @end

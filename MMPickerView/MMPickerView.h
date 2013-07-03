@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const backgroundColor;
+extern NSString * const textColor;
+extern NSString * const toolbarColor;
+extern NSString * const buttonColor;
+extern NSString * const font;
+extern NSString * const yValue;
 
 @interface MMPickerView : UIView  <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -26,20 +32,21 @@
 @property (nonatomic, strong) UIFont *pickerViewFont;
 @property (nonatomic, assign) CGFloat yValueFromTop;
 @property (nonatomic, assign) NSInteger previouslySelectedRow;
+//@property (nonatomic, strong) NSDictionary *designOptionsDictionary;
 
 @property (copy) void (^onDismissCompletion)(NSString *);
 @property (copy) NSString *(^objectToStringConverter)(id object);
 
 
 +(void)showInView: (UIView *)view
-        withArray: (NSArray *)array
+      withStrings: (NSArray *)strings
        completion: (void(^)(NSString *pickerLabelString))completion;
 
 +(void)dismissWithCompletion: (void(^)(NSString *))completion;
 
 
 +(void)showWithCustomDesignInView: (UIView *)view
-                        withArray: (NSArray *)array
+                      withStrings: (NSArray *)strings
               withBackgroundColor: (UIColor *)backgroundColor
                     withTextColor: (UIColor *)textColor
        withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
@@ -52,9 +59,26 @@
 
 
 +(void)showInView: (UIView *)view
-        withArray: (NSArray *)array
-withObjectToStringConverter: (NSString *(^)(id object))converter
+      withObjetcs: (NSArray *)objects
+ withObjectToStringConverter: (NSString *(^)(id object))converter
        completion: (void(^)(id chosenObject))completion;
+
++(void)showWithCustomDesignInView: (UIView *)view
+                      withObjects: (NSArray *)objects
+              withBackgroundColor: (UIColor *)backgroundColor
+                    withTextColor: (UIColor *)textColor
+       withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
+                  withButtonColor: (UIColor *)buttonColor
+                         withFont: (UIFont *)font
+                       withYValue: (CGFloat )yValue
+      withObjectToStringConverter: (NSString *(^)(id object))converter
+                       completion: (void(^)(id chosenObject))completion;
+
+
++(void)showInView: (UIView *)view
+      withStrings: (NSArray *)strings
+withDesignOptions: (NSDictionary *)options
+       completion: (void(^)(NSString *pickerLabelString))completion;
 
 
 /*
