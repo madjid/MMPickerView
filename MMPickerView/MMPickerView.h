@@ -36,82 +36,19 @@ extern NSString * const yValue;
 @property (copy) void (^onDismissCompletion)(NSString *);
 @property (copy) NSString *(^objectToStringConverter)(id object);
 
-
-+(void)showInView: (UIView *)view
-      withStrings: (NSArray *)strings
-       completion: (void(^)(NSString *pickerLabelString))completion;
-
 +(void)dismissWithCompletion: (void(^)(NSString *))completion;
 
++(void)showPickerViewInView: (UIView *)view
+                withStrings: (NSArray *)strings
+          withDesignOptions: (NSDictionary *)options
+                 completion: (void(^)(NSString *pickerLabelString))completion;
 
-+(void)showWithCustomDesignInView: (UIView *)view
-                      withStrings: (NSArray *)strings
-              withBackgroundColor: (UIColor *)backgroundColor
-                    withTextColor: (UIColor *)textColor
-       withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
-                  withButtonColor: (UIColor *)buttonColor
-                         withFont: (UIFont *)font
-                       withYValue: (CGFloat )yValue
-                       completion: (void(^)(NSString *pickerLabelString))completion;
-
-//       withToolbarBackgroundImage: (UIImage *)toolbarBackgroundImage
-
-
-+(void)showInView: (UIView *)view
-      withObjetcs: (NSArray *)objects
- withObjectToStringConverter: (NSString *(^)(id object))converter
-       completion: (void(^)(id chosenObject))completion;
-
-+(void)showWithCustomDesignInView: (UIView *)view
-                      withObjects: (NSArray *)objects
-              withBackgroundColor: (UIColor *)backgroundColor
-                    withTextColor: (UIColor *)textColor
-       withToolbarBackgroundColor: (UIColor *)toolbarBackgroundColor
-                  withButtonColor: (UIColor *)buttonColor
-                         withFont: (UIFont *)font
-                       withYValue: (CGFloat )yValue
-      withObjectToStringConverter: (NSString *(^)(id object))converter
-                       completion: (void(^)(id chosenObject))completion;
-
-
-+(void)showInView: (UIView *)view
-      withStrings: (NSArray *)strings
-withDesignOptions: (NSDictionary *)options
-       completion: (void(^)(NSString *pickerLabelString))completion;
-
-+(void)showInView: (UIView *)view
-      withObjetcs: (NSArray *)objects
-withDesignOptions: (NSDictionary *)options
++(void)showPickerViewInView: (UIView *)view
+                withObjetcs: (NSArray *)objects
+          withDesignOptions: (NSDictionary *)options
 withObjectToStringConverter: (NSString *(^)(id object))converter
        completion: (void(^)(id chosenObject))completion;
 
-
-
-/*
--(void)logObjects:(NSArray *)objects
-withStringConverter:(NSString* (^)(id object))converter {
-  
-  for (id object in objects) {
-    NSLog(@"%@", converter(object));
-  }
-  
-  
-}
-
--(void)myAwesomeMethod {
-  
-  NSArray *objects;
-  
-  [self logObjects:objects
-withStringConverter:^(id object) {
-  
-  return [object name];
-  
-}];
-  
-  
-}
-*/
 
 
 @end

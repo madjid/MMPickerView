@@ -123,18 +123,50 @@ withObjectToStringConverter:^NSString *(id object) {
     _label.text = [chosenObject description];
 }];*/
   
-  
-  [MMPickerView showInView:self.view withObjetcs:objectArray
+  /*
+  [MMPickerView showPickerViewInView:self.view withObjetcs:objectArray
          withDesignOptions: nil
 withObjectToStringConverter:^NSString *(id object) {
     return [object description];
   } completion:^(id chosenObject) {
     _label.text = [chosenObject description];
   }];
+  */
   
+  [MMPickerView showPickerViewInView:self.view withStrings:countriesArray withDesignOptions:nil completion:^(NSString *pickerLabelString) {
+    _label.text = pickerLabelString;
+  }];
  
   
 }
 
-  
+
+
+/*
+ -(void)logObjects:(NSArray *)objects
+ withStringConverter:(NSString* (^)(id object))converter {
+ 
+ for (id object in objects) {
+ NSLog(@"%@", converter(object));
+ }
+ 
+ 
+ }
+ 
+ -(void)myAwesomeMethod {
+ 
+ NSArray *objects;
+ 
+ [self logObjects:objects
+ withStringConverter:^(id object) {
+ 
+ return [object name];
+ 
+ }];
+ 
+ 
+ }
+ */
+
+
   @end
