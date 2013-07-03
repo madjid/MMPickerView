@@ -184,7 +184,7 @@ withObjectToStringConverter:(NSString *(^)(id))converter
   //Top bar view
   _pickerTopBarView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, _pickerContainerView.frame.size.width, 44.0)];
   [_pickerContainerView addSubview:_pickerTopBarView];
-  [_pickerTopBarView setBackgroundColor:[UIColor blackColor]];
+  [_pickerTopBarView setBackgroundColor:[UIColor whiteColor]];
   
   
   _pickerViewToolBar = [[UIToolbar alloc] initWithFrame:_pickerTopBarView.frame];
@@ -192,7 +192,6 @@ withObjectToStringConverter:(NSString *(^)(id))converter
   //[_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
   //_pickerViewToolBar.backgroundColor = [UIColor blackColor];
   //_pickerViewToolBar.barTintColor = toolbarBackgroundColor;
-  
   
   CGFloat iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
   NSLog(@"%f",iOSVersion);
@@ -289,11 +288,9 @@ withObjectToStringConverter:(NSString *(^)(id))converter
  //   patternImageView.image = [[UIImage imageNamed:@"texture"] resizableImageWithCapInsets:UIEdgeInsetsZero];
 //    [customPickerView addSubview:patternImageView];
     
-    
     if (_yValueFromTop == 0.0f) {
       _yValueFromTop = 3.0;
     }
-     
     
     CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 44); // 35 before
     pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
@@ -302,9 +299,6 @@ withObjectToStringConverter:(NSString *(^)(id))converter
     [pickerViewLabel setBackgroundColor:[UIColor clearColor]];
     [pickerViewLabel setTextColor:_pickerViewTextColor];
     [pickerViewLabel setFont:_pickerViewFont];
-     
-   // [countryNameLabel setFont:[FifaTheme condensedBigFont]];
-   // [countryNameLabel setTextColor:[FifaTheme budwiserBlueColor]];
     [customPickerView addSubview:pickerViewLabel];
   } else{
     
@@ -314,10 +308,7 @@ withObjectToStringConverter:(NSString *(^)(id))converter
         break;
       }
     }
-    
   }
-  
- // [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
   
   if (self.objectToStringConverter == nil){
     [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
