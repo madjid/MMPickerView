@@ -14,7 +14,7 @@ extern NSString * const toolbarColor;
 extern NSString * const buttonColor;
 extern NSString * const font;
 extern NSString * const yValue;
-extern NSString * const selectedRow;
+extern NSString * const selectedObject;
 
 @interface MMPickerView: UIView <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -32,22 +32,21 @@ extern NSString * const selectedRow;
 @property (nonatomic, strong) UIColor *pickerViewTextColor;
 @property (nonatomic, strong) UIFont *pickerViewFont;
 @property (nonatomic, assign) CGFloat yValueFromTop;
-@property (nonatomic, assign) NSInteger previouslySelectedRow;
 
-@property (copy) void (^onDismissCompletion)(NSString *, NSInteger );
+@property (copy) void (^onDismissCompletion)(NSString *);
 @property (copy) NSString *(^objectToStringConverter)(id object);
 
 +(void)showPickerViewInView: (UIView *)view
                 withStrings: (NSArray *)strings
                 withOptions: (NSDictionary *)options
-                 completion: (void(^)(NSString *chosenString, NSInteger selectedRow))completion;
+                 completion: (void(^)(NSString *selectedString))completion;
 
 +(void)showPickerViewInView: (UIView *)view
                 withObjetcs: (NSArray *)objects
                 withOptions: (NSDictionary *)options
     objectToStringConverter: (NSString *(^)(id object))converter
-       completion: (void(^)(id chosenObject))completion;
+       completion: (void(^)(id selectedObject))completion;
 
-+(void)dismissWithCompletion: (void(^)(NSString *, NSInteger))completion;
++(void)dismissWithCompletion: (void(^)(NSString *))completion;
 
 @end

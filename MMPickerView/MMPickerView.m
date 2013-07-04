@@ -14,7 +14,7 @@ NSString * const toolbarColor = @"toolbarColor";
 NSString * const buttonColor = @"buttonColor";
 NSString * const font = @"font";
 NSString * const yValue = @"yValueFromTop";
-NSString * const selectedRow = @"selectedRow";
+NSString * const selectedObject = @"selectedObject";
 
 @implementation MMPickerView 
 
@@ -39,7 +39,7 @@ NSString * const selectedRow = @"selectedRow";
 +(void)showPickerViewInView:(UIView *)view
                 withStrings:(NSArray *)strings
                 withOptions:(NSDictionary *)options
-                 completion:(void (^)(NSString *, NSInteger))completion{
+                 completion:(void (^)(NSString *))completion{
   
   [[self sharedView] initializePickerViewInView:view
                                       withArray:strings
@@ -56,15 +56,14 @@ NSString * const selectedRow = @"selectedRow";
                 withObjetcs:(NSArray *)objects
                 withOptions:(NSDictionary *)options
     objectToStringConverter:(NSString *(^)(id))converter
-                 completion:(void (^)(id))completion{
+                 completion:(void (^)(id))completion {
   
+  [self sharedView].objectToStringConverter = converter;
+  [self sharedView].onDismissCompletion = completion;
   [[self sharedView] initializePickerViewInView:view
                                       withArray:objects
                                     withOptions:options];
-  
-  [self sharedView].objectToStringConverter = converter;
   [[self sharedView] setPickerHidden:NO callBack:nil];
-//  [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
   
 }
@@ -72,7 +71,7 @@ NSString * const selectedRow = @"selectedRow";
 
 #pragma mark - Dismiss Methods
 
-+(void)dismissWithCompletion:(void (^)(NSString *, NSInteger))completion{
++(void)dismissWithCompletion:(void (^)(NSString *))completion{
   [[self sharedView] setPickerHidden:YES callBack:completion];
 }
 
@@ -87,7 +86,7 @@ NSString * const selectedRow = @"selectedRow";
 #pragma mark - Show/hide PickerView
 
 -(void)setPickerHidden: (BOOL)hidden
-              callBack: (void(^)(NSString *, NSInteger))callBack; {
+              callBack: (void(^)(NSString *))callBack; {
   
   [UIView animateWithDuration:0.3
                         delay:0.0
@@ -104,7 +103,7 @@ NSString * const selectedRow = @"selectedRow";
                    } completion:^(BOOL completed) {
                      if(completed && hidden){
                        [MMPickerView removePickerView];
-                       callBack([[self selectedObject] description], [self selectedRow]);
+                       callBack([[self selectedObject] description]);
                      }
                    }];
   
@@ -118,7 +117,15 @@ NSString * const selectedRow = @"selectedRow";
   
   _pickerViewArray = array;
   
-  NSInteger predefinedRow = [options[selectedRow] integerValue];
+  id chosenObject = options[selectedObject];
+  NSInteger selectedRow;
+  
+  if (chosenObject!=nil) {
+    selectedRow = [array indexOfObject:chosenObject];
+  }else{
+    selectedRow = [[array objectAtIndex:0] integerValue];
+  }
+ 
   
   UIColor *pickerViewBackgroundColor = [[UIColor alloc] initWithCGColor:[options[backgroundColor] CGColor]];
   UIColor *pickerViewTextColor = [[UIColor alloc] initWithCGColor:[options[textColor] CGColor]];
@@ -233,8 +240,10 @@ NSString * const selectedRow = @"selectedRow";
   
   //[self.pickerViewContainerView setAlpha:0.0];
   [_pickerContainerView setTransform:CGAffineTransformMakeTranslation(0.0, CGRectGetHeight(_pickerContainerView.frame))];
+
   
-  [_pickerView selectRow: predefinedRow inComponent:0 animated:YES];
+  
+  [_pickerView selectRow:selectedRow inComponent:0 animated:YES];
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -261,23 +270,16 @@ NSString * const selectedRow = @"selectedRow";
 #pragma mark - UIPickerViewDelegate
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-  _previouslySelectedRow = row;
-
   if (self.objectToStringConverter == nil) {
-    self.onDismissCompletion ([_pickerViewArray objectAtIndex:row], [self selectedRow]);
+    self.onDismissCompletion ([_pickerViewArray objectAtIndex:row]);
   } else{
- //   self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
+    self.onDismissCompletion (self.objectToStringConverter ([self selectedObject]));
   }
 }
 
 - (id)selectedObject {
   return [_pickerViewArray objectAtIndex: [self.pickerView selectedRowInComponent:0]];
 }
-
-- (NSInteger)selectedRow {
-  return [self.pickerView selectedRowInComponent:0];
-}
-
 
 - (UIView *)pickerView:(UIPickerView *)pickerView
             viewForRow:(NSInteger)row
@@ -322,7 +324,7 @@ NSString * const selectedRow = @"selectedRow";
   if (self.objectToStringConverter == nil){
     [pickerViewLabel setText: [_pickerViewArray objectAtIndex:row]];
   } else{
-  [pickerViewLabel setText:(self.objectToStringConverter ([_pickerViewArray objectAtIndex:row]))];
+    [pickerViewLabel setText:(self.objectToStringConverter ([_pickerViewArray objectAtIndex:row]))];
   }
   
   return customPickerView;
