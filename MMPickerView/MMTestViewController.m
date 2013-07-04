@@ -11,6 +11,8 @@
 
 @interface MMTestViewController ()
 
+@property (nonatomic, assign) NSInteger selectedRow;
+
 @end
 
 @implementation MMTestViewController
@@ -133,8 +135,11 @@ withObjectToStringConverter:^NSString *(id object) {
   }];
   */
   
-  [MMPickerView showPickerViewInView:self.view withStrings:countriesArray withDesignOptions:nil completion:^(NSString *pickerLabelString) {
-    _label.text = pickerLabelString;
+  
+  [MMPickerView showPickerViewInView:self.view withStrings:countriesArray withOptions:@{selectedRow:[NSNumber numberWithInt:_selectedRow]} completion:^(NSString *chosenString, NSInteger selectedRow) {
+    _label.text = chosenString;
+    
+    _selectedRow = selectedRow;
   }];
  
   
