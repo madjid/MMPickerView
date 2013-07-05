@@ -16,16 +16,31 @@ NSString * const font = @"font";
 NSString * const yValue = @"yValueFromTop";
 NSString * const selectedObject = @"selectedObject";
 
-@implementation MMPickerView 
+@interface MMPickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
+@property (nonatomic, strong) UILabel *pickerViewLabel;
+@property (nonatomic, strong) UIView *pickerViewLabelView;
+@property (nonatomic, strong) UIView *pickerContainerView;
+@property (nonatomic, strong) UIView *pickerViewContainerView;
+@property (nonatomic, strong) UIView *pickerTopBarView;
+@property (nonatomic, strong) UIImageView *pickerTopBarImageView;
+@property (nonatomic, strong) UIToolbar *pickerViewToolBar;
+@property (nonatomic, strong) UIBarButtonItem *pickerViewBarButtonItem;
+@property (nonatomic, strong) UIButton *pickerDoneButton;
+@property (nonatomic, strong) UIPickerView *pickerView;
+@property (nonatomic, strong) NSArray *pickerViewArray;
+@property (nonatomic, strong) UIColor *pickerViewTextColor;
+@property (nonatomic, strong) UIFont *pickerViewFont;
+@property (nonatomic, assign) CGFloat yValueFromTop;
+@property (copy) void (^onDismissCompletion)(NSString *);
+@property (copy) NSString *(^objectToStringConverter)(id object);
+
+@end
+
+
+@implementation MMPickerView
+
+#pragma mark - Singleton
 
 + (MMPickerView*)sharedView {
   static dispatch_once_t once;
@@ -49,7 +64,6 @@ NSString * const selectedObject = @"selectedObject";
   [self sharedView].onDismissCompletion = completion;
   [view addSubview:[self sharedView]];
   
-  
 }
 
 +(void)showPickerViewInView:(UIView *)view
@@ -68,7 +82,6 @@ NSString * const selectedObject = @"selectedObject";
   
 }
 
-
 #pragma mark - Dismiss Methods
 
 +(void)dismissWithCompletion:(void (^)(NSString *))completion{
@@ -83,7 +96,7 @@ NSString * const selectedObject = @"selectedObject";
   [[self sharedView] removeFromSuperview];
 }
 
-#pragma mark - Show/hide PickerView
+#pragma mark - Show/hide PickerView methods
 
 -(void)setPickerHidden: (BOOL)hidden
               callBack: (void(^)(NSString *))callBack; {
@@ -122,12 +135,8 @@ NSString * const selectedObject = @"selectedObject";
   
   if (chosenObject!=nil) {
     selectedRow = [_pickerViewArray indexOfObject:chosenObject];
-    NSLog(@"yes");
-    NSLog(@"SelectedRow: %d", selectedRow);
   }else{
     selectedRow = [[_pickerViewArray objectAtIndex:0] integerValue];
-    NSLog(@"no");
-    NSLog(@"SelectedRow: %d", selectedRow);
   }
   
   UIColor *pickerViewBackgroundColor = [[UIColor alloc] initWithCGColor:[options[backgroundColor] CGColor]];
@@ -203,9 +212,6 @@ NSString * const selectedObject = @"selectedObject";
   
   _pickerViewToolBar = [[UIToolbar alloc] initWithFrame:_pickerTopBarView.frame];
   [_pickerContainerView addSubview:_pickerViewToolBar];
-  //[_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
-  //_pickerViewToolBar.backgroundColor = [UIColor blackColor];
-  //_pickerViewToolBar.barTintColor = toolbarBackgroundColor;
   
   CGFloat iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
   NSLog(@"%f",iOSVersion);
@@ -268,7 +274,6 @@ NSString * const selectedObject = @"selectedObject";
   }
 }
 
-
 #pragma mark - UIPickerViewDelegate
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
@@ -297,15 +302,15 @@ NSString * const selectedObject = @"selectedObject";
     CGRect frame = CGRectMake(0.0, 0.0, 292.0, 44.0);
     customPickerView = [[UIView alloc] initWithFrame: frame];
     
-  //  UIImageView *patternImageView = [[UIImageView alloc] initWithFrame:frame];
- //   patternImageView.image = [[UIImage imageNamed:@"texture"] resizableImageWithCapInsets:UIEdgeInsetsZero];
+//   UIImageView *patternImageView = [[UIImageView alloc] initWithFrame:frame];
+//   patternImageView.image = [[UIImage imageNamed:@"texture"] resizableImageWithCapInsets:UIEdgeInsetsZero];
 //    [customPickerView addSubview:patternImageView];
     
     if (_yValueFromTop == 0.0f) {
       _yValueFromTop = 3.0;
     }
     
-    CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 44); // 35 before
+    CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 35); // 35 before
     pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
     [pickerViewLabel setTag:1];
     [pickerViewLabel setTextAlignment:NSTextAlignmentCenter];
