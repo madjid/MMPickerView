@@ -11,7 +11,7 @@
 
 @interface MMTestViewController ()
 
-@property (nonatomic, strong) NSArray *countriesArray;
+@property (nonatomic, strong) NSArray *stringsArray;
 @property (nonatomic, strong) NSArray *objectsArray;
 @property (nonatomic, strong) NSArray *numbersArray;
 @property (nonatomic, assign) id selectedObject;
@@ -35,17 +35,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
   
-  _countriesArray = @[@"Australia (AUD)", @"China (CNY)", @"France (EUR)",
-                              @"Great Britain (GBP)", @"Japan (JPY)", @"Iran (IR)", @"Sweden (SWE)", @"Swizerland (SW)",
-                              @"Albania (AL)", @"Denmark (DK)"];
+  _stringsArray = @[@"Easy & quick setup", @"Time-saver", @"Customizable", @"Only a few lines of code"];
   
-  _numbersArray = @[@12, @11, @123, @22, @5];
+  _numbersArray = @[@12, @11, @123, @22, @5, @12, @11, @123, @22, @5];
   
-  _objectsArray = [NSArray arrayWithObjects: @"hej", @14, @13.3, @"glass", @1,  nil];
+  _objectsArray = [NSArray arrayWithObjects: @"hello", @14, @13.3, @"Icecream", @1,  nil];
   
   _selectedObject = [_objectsArray objectAtIndex:0];
   
-  _selectedString = [_countriesArray objectAtIndex:0];
+  _selectedString = [_stringsArray objectAtIndex:0];
   
   NSLog(@"%@",[_selectedObject description]);
   
@@ -60,19 +58,64 @@
 - (IBAction)showPickerViewButtonPressed:(id)sender {
   
   /*
-   pickerViewBackgroundColor
-   pickerViewTextColor
-   toolbarBackgroundColor
-   buttonColor
-   font
-   yValueFromTop
-   selectedObject:_selectedString
+   Options:
+   
+   pickerViewBackgroundColor - UIColor 
+   pickerViewTextColor - UIColor
+   toolbarBackgroundColor - UIColor
+   buttonColor - UIColor
+   font - UIFont 
+   yValueFromTop - NSInteger
+   selectedObject - An Object ex: a string
+   
+   
+   Example 1:
+   
+   [MMPickerView showPickerViewInView:self.view
+   withStrings:_stringsArray
+   withOptions:nil
+   completion:^(NSString *selectedString) {
+   _label.text = selectedString;
+   _selectedString = selectedString;
+   }];
+   
+   
+   Example 2:
+   
+   [MMPickerView showPickerViewInView:self.view
+   withStrings:_stringsArray
+   withOptions:@{backgroundColor: [UIColor whiteColor],
+   textColor: [UIColor blackColor],
+   toolbarColor: [UIColor whiteColor],
+   buttonColor : [UIColor blueColor],
+   font : [UIFont systemFontOfSize:18],
+   yValue:@3,
+   selectedObject:_selectedString}
+   completion:^(NSString *selectedString) {
+   _label.text = selectedString;
+   _selectedString = selectedString;
+   }];
+   
+  
+   Example 3:
+   
+   [MMPickerView showPickerViewInView:self.view
+   withObjetcs:_objectsArray
+   withOptions:@{selectedObject:_selectedObject}
+   objectToStringConverter:^NSString *(id object) {
+   return [object description];
+   }
+   completion:^(id selectedObject) {
+   _label.text = [selectedObject description];
+   _selectedObject = selectedObject;
+   }];
+   
   */
   
   
   
   [MMPickerView showPickerViewInView:self.view
-                         withStrings:_countriesArray
+                         withStrings:_stringsArray
                          withOptions:@{backgroundColor: [UIColor whiteColor],
                                        textColor: [UIColor blackColor],
                                        toolbarColor: [UIColor whiteColor],
@@ -104,33 +147,4 @@
   
 }
 
-
-
-/*
- -(void)logObjects:(NSArray *)objects
- withStringConverter:(NSString* (^)(id object))converter {
- 
- for (id object in objects) {
- NSLog(@"%@", converter(object));
- }
- 
- 
- }
- 
- -(void)myAwesomeMethod {
- 
- NSArray *objects;
- 
- [self logObjects:objects
- withStringConverter:^(id object) {
- 
- return [object name];
- 
- }];
- 
- 
- }
- */
-
-
-  @end
+@end

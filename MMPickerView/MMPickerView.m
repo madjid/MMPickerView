@@ -310,7 +310,7 @@ NSString * const selectedObject = @"selectedObject";
       _yValueFromTop = 3.0;
     }
     
-    CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 35); // 35 before
+    CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 35); // 35 or 44
     pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
     [pickerViewLabel setTag:1];
     [pickerViewLabel setTextAlignment:NSTextAlignmentCenter];
