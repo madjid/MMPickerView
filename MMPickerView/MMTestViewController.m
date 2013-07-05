@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
   
-  _stringsArray = @[@"Easy & quick setup", @"Time-saver", @"Customizable", @"Only a few lines of code"];
+  _stringsArray = @[@"Easy to use", @"Time-saver", @"Customizable", @"Only a few lines of code", @"Works with custom fonts"];
   
   _numbersArray = @[@12, @11, @123, @22, @5, @12, @11, @123, @22, @5];
   
@@ -44,8 +44,6 @@
   _selectedObject = [_objectsArray objectAtIndex:0];
   
   _selectedString = [_stringsArray objectAtIndex:0];
-  
-  NSLog(@"%@",[_selectedObject description]);
   
 }
 

@@ -44,13 +44,4 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
-    <classes>
-        <class className="MMTestViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MMTestViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showPickerViewButtonPressed:"/>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
 </document>

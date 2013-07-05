@@ -214,7 +214,7 @@ NSString * const selectedObject = @"selectedObject";
   [_pickerContainerView addSubview:_pickerViewToolBar];
   
   CGFloat iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
-  NSLog(@"%f",iOSVersion);
+  //NSLog(@"%f",iOSVersion);
   
   if (iOSVersion < 7.0) {
     _pickerViewToolBar.tintColor = toolbarBackgroundColor;
