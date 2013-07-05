@@ -11,7 +11,11 @@
 
 @interface MMTestViewController ()
 
+@property (nonatomic, strong) NSArray *countriesArray;
+@property (nonatomic, strong) NSArray *objectsArray;
+@property (nonatomic, strong) NSArray *numbersArray;
 @property (nonatomic, assign) id selectedObject;
+@property (nonatomic, strong) NSString * selectedString;
 
 @end
 
@@ -30,6 +34,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  
+  _countriesArray = @[@"Australia (AUD)", @"China (CNY)", @"France (EUR)",
+                              @"Great Britain (GBP)", @"Japan (JPY)", @"Iran (IR)", @"Sweden (SWE)", @"Swizerland (SW)",
+                              @"Albania (AL)", @"Denmark (DK)"];
+  
+  _numbersArray = @[@12, @11, @123, @22, @5];
+  
+  _objectsArray = [NSArray arrayWithObjects: @"hej", @14, @13.3, @"glass", @1,  nil];
+  
+  _selectedObject = [_objectsArray objectAtIndex:0];
+  
+  _selectedString = [_countriesArray objectAtIndex:0];
+  
+  NSLog(@"%@",[_selectedObject description]);
+  
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,46 +58,7 @@
 }
 
 - (IBAction)showPickerViewButtonPressed:(id)sender {
- 
-  NSArray *countriesArray = @[@"Australia (AUD)", @"China (CNY)", @"France (EUR)",
-                              @"Great Britain (GBP)", @"Japan (JPY)", @"Iran (IR)", @"Sweden (SWE)", @"Swizerland (SW)",
-                              @"Albania (AL)", @"Denmark (DK)"];
-
-  NSArray *numbersArray = @[@12, @11, @123, @22, @5];
- 
-  NSArray *objectArray = [NSArray arrayWithObjects: @"hej", @14, @13.3,  nil];
   
-  /*
-  [MMPickerView showInView:self.view withArray:countriesArray completion:^(NSString *pickerLabelString) {
-    _label.text = pickerLabelString;
-  }];
-  */
-  
-  /*
-  [MMPickerView showWithCustomDesignInView:self.view
-                                 withArray:countriesArray 
-                       withBackgroundColor:[UIColor blackColor]
-                             withTextColor:[UIColor whiteColor]
-                withToolbarBackgroundColor:[UIColor blackColor]
-                           withButtonColor:[UIColor grayColor]
-                                  withFont:[UIFont fontWithName:@"Helvetiva-Neue" size:22.0]
-                                withYValue:0
-                                completion:^(NSString *pickerLabelString) {
-    _label.text = pickerLabelString;
-  }];
-  
-*/
-  
-  /*
-  [MMPickerView showInView:self.view withObjetcs:objectArray withObjectToStringConverter:^NSString *(id object) {
-    
-    return [object description];
-    
-  } completion:^(id chosenObject) {
-    _label.text = [chosenObject description];
-    
-  }];
-  */
   /*
    pickerViewBackgroundColor
    pickerViewTextColor
@@ -86,71 +66,32 @@
    buttonColor
    font
    yValueFromTop
-   
-  */
-  
-  /*
-  [MMPickerView showWithCustomDesignInView:self.view withArray:countriesArray withBackgroundColor:nil withTextColor:nil withToolbarBackgroundColor:nil withButtonColor:nil withFont:[UIFont fontWithName:@"Helvetica-Bold" size:22.0] withYValue:3.0 completion:^(NSString *pickerLabelString) {
-    _label.text = pickerLabelString;
-  }];
+   selectedObject:_selectedString
   */
   
   
-  //Nytt satt att gora det pa
   
-  /*
-   [MMPickerView showInView:self.view
-   withStrings:countriesArray
-   withDesignOptions:@{backgroundColor: [UIColor whiteColor],
-   textColor: [UIColor blackColor],
-   toolbarColor: [UIColor whiteColor],
-   buttonColor : [UIColor blueColor],
-   font : [UIFont systemFontOfSize:18],
-   yValue:@3 }
-   completion:^(NSString *pickerLabelString) {
-   _label.text = pickerLabelString;
-   }];
-   */
-  /*
-  [MMPickerView showInView:self.view withObjetcs:objectArray
-         withDesignOptions:@{backgroundColor: [UIColor redColor],
-                             textColor: [UIColor blackColor],
-                             toolbarColor: [UIColor whiteColor],
-                             buttonColor : [UIColor blueColor],
-                             font : [UIFont systemFontOfSize:18],
-                             yValue: @3}
-withObjectToStringConverter:^NSString *(id object) {
-    return [object description];
-} completion:^(id chosenObject) {
-    _label.text = [chosenObject description];
-}];*/
-  
-  /*
-  [MMPickerView showPickerViewInView:self.view withObjetcs:objectArray
-         withDesignOptions: nil
-withObjectToStringConverter:^NSString *(id object) {
-    return [object description];
-  } completion:^(id chosenObject) {
-    _label.text = [chosenObject description];
-  }];
-  */
-  
-  /*
   [MMPickerView showPickerViewInView:self.view
-                         withStrings:countriesArray
-                         withOptions:@{selectedObject:@"Japan (JPY)"}
+                         withStrings:_countriesArray
+                         withOptions:@{backgroundColor: [UIColor whiteColor],
+                                       textColor: [UIColor blackColor],
+                                       toolbarColor: [UIColor whiteColor],
+                                       buttonColor : [UIColor blueColor],
+                                       font : [UIFont systemFontOfSize:18],
+                                       yValue:@3,
+                                       selectedObject:_selectedString}
                           completion:^(NSString *selectedString) {
     
-    _label.text = selectedString;
-
+                            _label.text = selectedString;
+                            _selectedString = selectedString;
   }];
- */
+ 
  
   
-  
+  /*
   [MMPickerView showPickerViewInView:self.view
-                         withObjetcs:objectArray
-                         withOptions:@{selectedObject:@14}
+                         withObjetcs:_objectsArray
+                         withOptions:@{selectedObject:_selectedObject}
              objectToStringConverter:^NSString *(id object) {
                return [object description];
              }
@@ -159,7 +100,7 @@ withObjectToStringConverter:^NSString *(id object) {
                             _label.text = [selectedObject description];
                             _selectedObject = selectedObject;
   }];
-  
+  */
   
 }
 

@@ -103,7 +103,7 @@ NSString * const selectedObject = @"selectedObject";
                    } completion:^(BOOL completed) {
                      if(completed && hidden){
                        [MMPickerView removePickerView];
-                       callBack([[self selectedObject] description]);
+                       callBack([self selectedObject]);
                      }
                    }];
   
@@ -121,11 +121,14 @@ NSString * const selectedObject = @"selectedObject";
   NSInteger selectedRow;
   
   if (chosenObject!=nil) {
-    selectedRow = [array indexOfObject:chosenObject];
+    selectedRow = [_pickerViewArray indexOfObject:chosenObject];
+    NSLog(@"yes");
+    NSLog(@"SelectedRow: %d", selectedRow);
   }else{
-    selectedRow = [[array objectAtIndex:0] integerValue];
+    selectedRow = [[_pickerViewArray objectAtIndex:0] integerValue];
+    NSLog(@"no");
+    NSLog(@"SelectedRow: %d", selectedRow);
   }
- 
   
   UIColor *pickerViewBackgroundColor = [[UIColor alloc] initWithCGColor:[options[backgroundColor] CGColor]];
   UIColor *pickerViewTextColor = [[UIColor alloc] initWithCGColor:[options[textColor] CGColor]];
@@ -240,9 +243,8 @@ NSString * const selectedObject = @"selectedObject";
   
   //[self.pickerViewContainerView setAlpha:0.0];
   [_pickerContainerView setTransform:CGAffineTransformMakeTranslation(0.0, CGRectGetHeight(_pickerContainerView.frame))];
-
   
-  
+  //Set selected row
   [_pickerView selectRow:selectedRow inComponent:0 animated:YES];
 }
 
