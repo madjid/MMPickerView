@@ -15,6 +15,7 @@ extern NSString * const buttonColor;
 extern NSString * const font;
 extern NSString * const yValue;
 extern NSString * const selectedObject;
+extern NSString * const toolbarBackgroundImage;
 
 @interface MMPickerView: UIView 
 

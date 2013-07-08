@@ -15,6 +15,7 @@ NSString * const buttonColor = @"buttonColor";
 NSString * const font = @"font";
 NSString * const yValue = @"yValueFromTop";
 NSString * const selectedObject = @"selectedObject";
+NSString * const toolbarBackgroundImage = @"toolbarBackgroundImage";
 
 @interface MMPickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -150,6 +151,8 @@ NSString * const selectedObject = @"selectedObject";
   [self setFrame: view.bounds];
   [self setBackgroundColor:[UIColor clearColor]];
   
+  UIImage * toolbarImage = options[toolbarBackgroundImage];
+  
   //Whole screen with PickerView and a dimmed background
   _pickerViewContainerView = [[UIView alloc] initWithFrame:view.bounds];
   [_pickerViewContainerView setBackgroundColor: [UIColor colorWithRed:0.412 green:0.412 blue:0.412 alpha:0.7]];
@@ -224,6 +227,10 @@ NSString * const selectedObject = @"selectedObject";
 
  //    _pickerViewToolBar.tintColor = toolbarBackgroundColor;
     //_pickerViewToolBar.barTintColor = toolbarBackgroundColor;
+  }
+  
+  if (toolbarImage!=nil) {
+    [_pickerViewToolBar setBackgroundImage:toolbarImage forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
   }
   
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
