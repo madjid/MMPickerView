@@ -7,39 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02A9CD4117618A6200301653 /* MMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A9CD3F17618A6200301653 /* MMTestViewController.m */; };
-		02A9CD4217618A6200301653 /* MMTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A9CD4017618A6200301653 /* MMTestViewController.xib */; };
+		02AE8226178AC23E00980090 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02AE8218178AC23E00980090 /* Default-568h@2x.png */; };
+		02AE8227178AC23E00980090 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 02AE8219178AC23E00980090 /* Default.png */; };
+		02AE8228178AC23E00980090 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02AE821A178AC23E00980090 /* Default@2x.png */; };
+		02AE8229178AC23E00980090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02AE821C178AC23E00980090 /* InfoPlist.strings */; };
+		02AE822A178AC23E00980090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE821E178AC23E00980090 /* main.m */; };
+		02AE822E178AC23E00980090 /* MMTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02AE8225178AC23E00980090 /* MMTestViewController.xib */; };
+		02AE823A178AC2EE00980090 /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE8239178AC2EE00980090 /* MMPickerView.m */; };
+		02AE8240178AC6E300980090 /* MMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE823D178AC6E300980090 /* MMAppDelegate.m */; };
+		02AE8241178AC6E300980090 /* MMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE823F178AC6E300980090 /* MMTestViewController.m */; };
 		02D8FC53175F272000DE34E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC52175F272000DE34E6 /* UIKit.framework */; };
 		02D8FC55175F272000DE34E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC54175F272000DE34E6 /* Foundation.framework */; };
 		02D8FC57175F272000DE34E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D8FC56175F272000DE34E6 /* CoreGraphics.framework */; };
-		02D8FC5D175F272000DE34E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02D8FC5B175F272000DE34E6 /* InfoPlist.strings */; };
-		02D8FC5F175F272000DE34E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D8FC5E175F272000DE34E6 /* main.m */; };
-		02D8FC63175F272000DE34E6 /* MMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D8FC62175F272000DE34E6 /* MMAppDelegate.m */; };
-		02D8FC65175F272000DE34E6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 02D8FC64175F272000DE34E6 /* Default.png */; };
-		02D8FC67175F272000DE34E6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02D8FC66175F272000DE34E6 /* Default@2x.png */; };
-		02D8FC69175F272000DE34E6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02D8FC68175F272000DE34E6 /* Default-568h@2x.png */; };
-		02D8FC77175F275F00DE34E6 /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D8FC76175F275F00DE34E6 /* MMPickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02A9CD3E17618A6200301653 /* MMTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTestViewController.h; sourceTree = "<group>"; };
-		02A9CD3F17618A6200301653 /* MMTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTestViewController.m; sourceTree = "<group>"; };
-		02A9CD4017618A6200301653 /* MMTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MMTestViewController.xib; sourceTree = "<group>"; };
+		02AE8218178AC23E00980090 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		02AE8219178AC23E00980090 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		02AE821A178AC23E00980090 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		02AE821D178AC23E00980090 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		02AE821E178AC23E00980090 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		02AE8221178AC23E00980090 /* MMPickerView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MMPickerView-Info.plist"; sourceTree = "<group>"; };
+		02AE8222178AC23E00980090 /* MMPickerView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMPickerView-Prefix.pch"; sourceTree = "<group>"; };
+		02AE8225178AC23E00980090 /* MMTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MMTestViewController.xib; path = ../MMTestViewController.xib; sourceTree = "<group>"; };
+		02AE8238178AC2EE00980090 /* MMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
+		02AE8239178AC2EE00980090 /* MMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerView.m; sourceTree = "<group>"; };
+		02AE823C178AC6E300980090 /* MMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMAppDelegate.h; sourceTree = "<group>"; };
+		02AE823D178AC6E300980090 /* MMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMAppDelegate.m; sourceTree = "<group>"; };
+		02AE823E178AC6E300980090 /* MMTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTestViewController.h; sourceTree = "<group>"; };
+		02AE823F178AC6E300980090 /* MMTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTestViewController.m; sourceTree = "<group>"; };
 		02D8FC4F175F272000DE34E6 /* MMPickerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMPickerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D8FC52175F272000DE34E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		02D8FC54175F272000DE34E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02D8FC56175F272000DE34E6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		02D8FC5A175F272000DE34E6 /* MMPickerView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MMPickerView-Info.plist"; sourceTree = "<group>"; };
-		02D8FC5C175F272000DE34E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		02D8FC5E175F272000DE34E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		02D8FC60175F272000DE34E6 /* MMPickerView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMPickerView-Prefix.pch"; sourceTree = "<group>"; };
-		02D8FC61175F272000DE34E6 /* MMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAppDelegate.h; sourceTree = "<group>"; };
-		02D8FC62175F272000DE34E6 /* MMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAppDelegate.m; sourceTree = "<group>"; };
-		02D8FC64175F272000DE34E6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		02D8FC66175F272000DE34E6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		02D8FC68175F272000DE34E6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		02D8FC75175F275F00DE34E6 /* MMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
-		02D8FC76175F275F00DE34E6 /* MMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPickerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +56,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02AE8217178AC20C00980090 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				02AE823B178AC6E300980090 /* Classes */,
+				02AE8243178AC71200980090 /* Supporting Files */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+		02AE821B178AC23E00980090 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				02AE821C178AC23E00980090 /* InfoPlist.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		02AE8237178AC2EE00980090 /* MMPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				02AE8238178AC2EE00980090 /* MMPickerView.h */,
+				02AE8239178AC2EE00980090 /* MMPickerView.m */,
+			);
+			name = MMPickerView;
+			path = ../MMPickerView;
+			sourceTree = "<group>";
+		};
+		02AE823B178AC6E300980090 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				02AE823C178AC6E300980090 /* MMAppDelegate.h */,
+				02AE823D178AC6E300980090 /* MMAppDelegate.m */,
+				02AE823E178AC6E300980090 /* MMTestViewController.h */,
+				02AE823F178AC6E300980090 /* MMTestViewController.m */,
+				02AE8225178AC23E00980090 /* MMTestViewController.xib */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		02AE8243178AC71200980090 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				02AE8218178AC23E00980090 /* Default-568h@2x.png */,
+				02AE8219178AC23E00980090 /* Default.png */,
+				02AE821A178AC23E00980090 /* Default@2x.png */,
+				02AE821B178AC23E00980090 /* en.lproj */,
+				02AE821E178AC23E00980090 /* main.m */,
+				02AE8221178AC23E00980090 /* MMPickerView-Info.plist */,
+				02AE8222178AC23E00980090 /* MMPickerView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		02D8FC46175F271F00DE34E6 = {
 			isa = PBXGroup;
 			children = (
-				02D8FC58175F272000DE34E6 /* MMPickerView */,
+				02AE8237178AC2EE00980090 /* MMPickerView */,
+				02AE8217178AC20C00980090 /* Demo */,
 				02D8FC51175F272000DE34E6 /* Frameworks */,
 				02D8FC50175F272000DE34E6 /* Products */,
 			);
@@ -81,35 +135,6 @@
 				02D8FC56175F272000DE34E6 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		02D8FC58175F272000DE34E6 /* MMPickerView */ = {
-			isa = PBXGroup;
-			children = (
-				02D8FC61175F272000DE34E6 /* MMAppDelegate.h */,
-				02D8FC62175F272000DE34E6 /* MMAppDelegate.m */,
-				02D8FC75175F275F00DE34E6 /* MMPickerView.h */,
-				02D8FC76175F275F00DE34E6 /* MMPickerView.m */,
-				02A9CD3E17618A6200301653 /* MMTestViewController.h */,
-				02A9CD3F17618A6200301653 /* MMTestViewController.m */,
-				02A9CD4017618A6200301653 /* MMTestViewController.xib */,
-				02D8FC59175F272000DE34E6 /* Supporting Files */,
-			);
-			path = MMPickerView;
-			sourceTree = "<group>";
-		};
-		02D8FC59175F272000DE34E6 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				02D8FC5A175F272000DE34E6 /* MMPickerView-Info.plist */,
-				02D8FC5B175F272000DE34E6 /* InfoPlist.strings */,
-				02D8FC5E175F272000DE34E6 /* main.m */,
-				02D8FC60175F272000DE34E6 /* MMPickerView-Prefix.pch */,
-				02D8FC64175F272000DE34E6 /* Default.png */,
-				02D8FC66175F272000DE34E6 /* Default@2x.png */,
-				02D8FC68175F272000DE34E6 /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,11 +189,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02D8FC5D175F272000DE34E6 /* InfoPlist.strings in Resources */,
-				02D8FC65175F272000DE34E6 /* Default.png in Resources */,
-				02D8FC67175F272000DE34E6 /* Default@2x.png in Resources */,
-				02D8FC69175F272000DE34E6 /* Default-568h@2x.png in Resources */,
-				02A9CD4217618A6200301653 /* MMTestViewController.xib in Resources */,
+				02AE822E178AC23E00980090 /* MMTestViewController.xib in Resources */,
+				02AE8228178AC23E00980090 /* Default@2x.png in Resources */,
+				02AE8229178AC23E00980090 /* InfoPlist.strings in Resources */,
+				02AE8226178AC23E00980090 /* Default-568h@2x.png in Resources */,
+				02AE8227178AC23E00980090 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,20 +204,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02D8FC5F175F272000DE34E6 /* main.m in Sources */,
-				02D8FC63175F272000DE34E6 /* MMAppDelegate.m in Sources */,
-				02D8FC77175F275F00DE34E6 /* MMPickerView.m in Sources */,
-				02A9CD4117618A6200301653 /* MMTestViewController.m in Sources */,
+				02AE823A178AC2EE00980090 /* MMPickerView.m in Sources */,
+				02AE8240178AC6E300980090 /* MMAppDelegate.m in Sources */,
+				02AE8241178AC6E300980090 /* MMTestViewController.m in Sources */,
+				02AE822A178AC23E00980090 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		02D8FC5B175F272000DE34E6 /* InfoPlist.strings */ = {
+		02AE821C178AC23E00980090 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				02D8FC5C175F272000DE34E6 /* en */,
+				02AE821D178AC23E00980090 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -260,8 +285,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MMPickerView/MMPickerView-Prefix.pch";
-				INFOPLIST_FILE = "MMPickerView/MMPickerView-Info.plist";
+				GCC_PREFIX_HEADER = "MMPickerView-Prefix.pch";
+				INFOPLIST_FILE = "MMPickerView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -271,8 +296,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MMPickerView/MMPickerView-Prefix.pch";
-				INFOPLIST_FILE = "MMPickerView/MMPickerView-Info.plist";
+				GCC_PREFIX_HEADER = "MMPickerView-Prefix.pch";
+				INFOPLIST_FILE = "MMPickerView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
