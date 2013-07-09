@@ -68,7 +68,7 @@ NSString * const toolbarBackgroundImage = @"toolbarBackgroundImage";
 }
 
 +(void)showPickerViewInView:(UIView *)view
-                withObjetcs:(NSArray *)objects
+                withObjects:(NSArray *)objects
                 withOptions:(NSDictionary *)options
     objectToStringConverter:(NSString *(^)(id))converter
                  completion:(void (^)(id))completion {
@@ -230,7 +230,7 @@ NSString * const toolbarBackgroundImage = @"toolbarBackgroundImage";
   }
   
   if (toolbarImage!=nil) {
-    [_pickerViewToolBar setBackgroundImage:toolbarImage forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [_pickerViewToolBar setBackgroundImage:toolbarImage forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
   }
   
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];

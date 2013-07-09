@@ -25,7 +25,7 @@ extern NSString * const toolbarBackgroundImage;
                  completion: (void(^)(NSString *selectedString))completion;
 
 +(void)showPickerViewInView: (UIView *)view
-                withObjetcs: (NSArray *)objects
+                withObjects: (NSArray *)objects
                 withOptions: (NSDictionary *)options
     objectToStringConverter: (NSString *(^)(id object))converter
        completion: (void(^)(id selectedObject))completion;

@@ -98,7 +98,7 @@
    Example 3:
    
    [MMPickerView showPickerViewInView:self.view
-   withObjetcs:_objectsArray
+   withObjects:_objectsArray
    withOptions:@{selectedObject:_selectedObject}
    objectToStringConverter:^NSString *(id object) {
    return [object description];
@@ -131,7 +131,7 @@
   
   /*
   [MMPickerView showPickerViewInView:self.view
-                         withObjetcs:_objectsArray
+                         withObjects:_objectsArray
                          withOptions:@{selectedObject:_selectedObject}
              objectToStringConverter:^NSString *(id object) {
                return [object description];
