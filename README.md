@@ -92,17 +92,16 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
 
 #### Example 3 - Show with an array of strings and with custom colors and custom font.
 ```objective-c
-
-  UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
-  
-  NSDictionary *options = @{backgroundColor: [UIColor colorWithWhite:0.500 alpha:0.500],
-                            textColor: [UIColor whiteColor],
-                            toolbarColor: [UIColor darkGrayColor],
-                            buttonColor: [UIColor whiteColor],
-                            font: customFont,
-                            yValue: @5};
   
   NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
+  UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
+  NSDictionary *options = @{backgroundColor: [UIColor blackColor],
+                                  textColor: [UIColor whiteColor],
+                               toolbarColor: [UIColor darkGrayColor],
+                                buttonColor: [UIColor whiteColor],
+                                       font: customFont,
+                                     yValue: @5};
+
   
   [MMPickerView showPickerViewInView:self.view
                          withStrings:strings
@@ -112,4 +111,53 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
                             self.label.text = selectedString;
                           }];
 ```
+
+### Selected Value
+A useful feature is to let the PickerView select whatever was selected last time. This can easily be done with both show methods, as shown in the Example 4.
+
+
+
+#### Example 4 - Show with an array of strings set selectedValue on PickerView.
+
+```objective-c
+  
+@interface ViewController ()
+
+@property (nonatomic, strong) NSString * selectedString;
+
+@end
+  
+  
+@implementation ViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+  
+  self.selectedString = [_stringsArray objectAtIndex:0];
+  
+}
+
+
+  
+- (IBAction)showPickerViewButtonPressed:(id)sender {
+
+  
+  NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
+  [MMPickerView showPickerViewInView:self.view
+                         withStrings:strings
+                         withOptions:@{selectedObject:_selectedString}
+                          completion:^(NSString *selectedString) {
+    
+                            _label.text = selectedString;
+                            _selectedString = selectedString;
+  }];
+  
+}
+
+@end  
+```
+
+
+
 
