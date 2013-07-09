@@ -158,6 +158,8 @@ A useful feature is to let the PickerView select whatever was selected last time
 @end  
 ```
 
+## Credits
 
+MMPickerView is brought to you by [Madjid Mahdjoubi](http://madjid.se). If you have feature suggestions or bug reports, feel free to help out by sending pull requests or by [creating new issues](https://github.com/madjid/MMPickerView/issues/new). If you're using MMPickerView in your project, attribution would be nice.
 
 
