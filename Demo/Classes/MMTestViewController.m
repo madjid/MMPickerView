@@ -54,7 +54,7 @@
 }
 
 - (IBAction)showPickerViewButtonPressed:(id)sender {
-  
+
   /*
    Options:
    
@@ -65,7 +65,7 @@
    font - UIFont 
    yValueFromTop - NSInteger
    selectedObject - An Object ex: a string
-   
+   toolbarBackgroundImage  - UIImage
    
    Example 1:
    
@@ -110,8 +110,19 @@
    
   */
   
+  NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
+  
+  [MMPickerView showPickerViewInView:self.view
+                         withStrings:strings
+                         withOptions:nil
+                          completion:^(NSString *selectedString) {
+                            
+                            self.label.text = selectedString;
+                            
+                          }];
   
   
+  /*
   [MMPickerView showPickerViewInView:self.view
                          withStrings:_stringsArray
                          withOptions:@{backgroundColor: [UIColor whiteColor],
@@ -126,7 +137,7 @@
                             _label.text = selectedString;
                             _selectedString = selectedString;
   }];
- 
+ */
  
   
   /*
