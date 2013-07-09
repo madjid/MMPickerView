@@ -58,10 +58,10 @@ You can show the PickerView:
 #### Example 2 - Show with an array of objects.
 ```objective-c
     
-  NSArray *objects = @[@"This is a mix of objects", @14, @13.3, @"A string", @1];
+  NSArray *objects = @[@"This is a mix of objects", @14, @13.3, @"A string", @1000];
 
   [MMPickerView showPickerViewInView:self.view
-   						 withObjects:_objectsArray
+   						 withObjects:objects
 					     withOptions:nil
 		    objectToStringConverter:^NSString *(id object) {
 			//This is where you convert your object and return a string, for eg. return person.name;
@@ -86,14 +86,30 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
 - `buttonColor` - `UIColor`
 - `font` - `UIFont` 
 - `yValueFromTop` - `NSInteger`
-- `selectedObject` - `id`, an object
+- `selectedObject` - `id`
 - `toolbarBackgroundImage` - `UIImage`
 
+
+#### Example 3 - Show with an array of strings and with custom colors and custom font.
 ```objective-c
-NSDictionary *options = @{backgroundColor: [UIColor whiteColor],
-            					textColor: [UIColor blackColor],
-						     toolbarColor: [UIColor whiteColor],
-						     buttonColor : [UIColor blueColor],
-								    font : [UIFont systemFontOfSize:18],
-								   yValue: @3};
+
+  UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
+  
+  NSDictionary *options = @{backgroundColor: [UIColor colorWithWhite:0.500 alpha:0.500],
+                            textColor: [UIColor whiteColor],
+                            toolbarColor: [UIColor darkGrayColor],
+                            buttonColor: [UIColor whiteColor],
+                            font: customFont,
+                            yValue: @5};
+  
+  NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
+  
+  [MMPickerView showPickerViewInView:self.view
+                         withStrings:strings
+                         withOptions:options
+                          completion:^(NSString *selectedString) {
+                            //selectedString is the return value which you can use as you wish
+                            self.label.text = selectedString;
+                          }];
 ```
+
