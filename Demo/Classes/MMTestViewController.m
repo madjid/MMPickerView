@@ -69,14 +69,14 @@
   */
   
   
-  
+  /*
   
   //PickerView with Custom look, with array of strings
   UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
-  NSDictionary *options = @{MMbackgroundColor:[UIColor colorWithRed:0.267 green:0.447 blue:0.580 alpha:1],
-                            MMtextColor: [UIColor colorWithHue:0.091 saturation:0.177 brightness:0.973 alpha:1],
-                            MMtoolbarColor:[UIColor colorWithRed:0.561 green:0.737 blue:0.859 alpha:1] ,
-                            MMbuttonColor: [UIColor colorWithRed:0.161 green:0.251 blue:0.322 alpha:1],
+  NSDictionary *options = @{MMbackgroundColor:[UIColor clearColor],
+                            MMtextColor: [UIColor colorWithRed:0.063 green:0.180 blue:0.216 alpha:1],
+                            MMtoolbarColor:[UIColor colorWithRed:0.169 green:0.733 blue:0.847 alpha:1],
+                            MMbuttonColor:[UIColor colorWithRed:0.969 green:0.553 blue:0.247 alpha:1],
                             MMfont: customFont,
                             MMvalueY: @5};
   
@@ -87,10 +87,10 @@
                             //selectedString is the return value which you can use as you wish
                             self.label.text = selectedString;
                           }];
+  */
   
   
   
-  /*
   //PickerView with selectedValue functionality, and customized look, with array of strings
    [MMPickerView showPickerViewInView:self.view
                           withStrings:_stringsArray
@@ -106,7 +106,7 @@
                              _label.text = selectedString;
                              _selectedString = selectedString;
    }];
-  */
+  
   
   
   /*

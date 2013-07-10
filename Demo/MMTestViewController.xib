@@ -40,7 +40,7 @@
 						<reference key="NSNextResponder" ref="1044623618"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{96, 88}, {129, 24}}</string>
+						<string key="NSFrame">{{96, 88}, {129, 46}}</string>
 						<reference key="NSSuperview" ref="1044623618"/>
 						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
