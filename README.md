@@ -86,8 +86,8 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
 - `MMbuttonColor` - `UIColor`			 //The background color (<= iOS 6) or text color (>=iOS 7) of the Done button
 - `MMfont` - `UIFont` 					 //The font of the PickerView labels
 - `MMValueY` - `NSInteger`				 //The Y value from the top of every label in the PickerView, useful when changing font and font-size.
-- `MMselectedObject` - `id`				 //The selected object presented in the PickerView
-- `MMtoolbarBackgroundImage` - `UIImage` //The background image of the toolbar 
+- `MMselectedObject` - `id`				 //The selected object presented in the PickerView, an object that exists in the array, for eg. [yourArray objectAtIndex:0];
+- `MMtoolbarBackgroundImage` - `UIImage` //The background image of the toolbar (320 x 44 for non retina, 640 x 88 for retina)
 
 
 #### Example 3 - Show with an array of strings and with custom colors and custom font.
