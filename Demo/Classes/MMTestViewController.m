@@ -21,15 +21,6 @@
 
 @implementation MMTestViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,11 +33,6 @@
   
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)showPickerViewButtonPressed:(id)sender {
 
@@ -85,10 +71,6 @@
   
   
   
-  
-  
-  
-  
   //PickerView with Custom look, with array of strings
   UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
   NSDictionary *options = @{MMbackgroundColor:[UIColor colorWithRed:0.267 green:0.447 blue:0.580 alpha:1],
@@ -105,10 +87,6 @@
                             //selectedString is the return value which you can use as you wish
                             self.label.text = selectedString;
                           }];
-  
-  
-  
-  
   
   
   

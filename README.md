@@ -37,7 +37,7 @@ You can show the PickerView:
                 withObjetcs: (NSArray *)objects
                 withOptions: (NSDictionary *)options
     objectToStringConverter: (NSString *(^)(id object))converter
-       completion: (void(^)(id selectedObject))completion;
+       			 completion: (void(^)(id selectedObject))completion;
 ```
 
 
