@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const backgroundColor;
-extern NSString * const textColor;
-extern NSString * const toolbarColor;
-extern NSString * const buttonColor;
-extern NSString * const font;
-extern NSString * const yValue;
-extern NSString * const selectedObject;
-extern NSString * const toolbarBackgroundImage;
+extern NSString * const MMbackgroundColor;
+extern NSString * const MMtextColor;
+extern NSString * const MMtoolbarColor;
+extern NSString * const MMbuttonColor;
+extern NSString * const MMfont;
+extern NSString * const MMvalueY;
+extern NSString * const MMselectedObject;
+extern NSString * const MMtoolbarBackgroundImage;
 
 @interface MMPickerView: UIView 
 

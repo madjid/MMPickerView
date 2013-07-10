@@ -80,14 +80,14 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
 
 **Options**
 
-- `pickerViewBackgroundColor` - `UIColor`
-- `pickerViewTextColor` - `UIColor`
-- `toolbarBackgroundColor` - `UIColor`
-- `buttonColor` - `UIColor`
-- `font` - `UIFont` 
-- `yValueFromTop` - `NSInteger`
-- `selectedObject` - `id`
-- `toolbarBackgroundImage` - `UIImage`
+- `MMbackgroundColor` - `UIColor`
+- `MMtextColor` - `UIColor`
+- `MMtoolbarBackgroundColor` - `UIColor`
+- `MMbuttonColor` - `UIColor`
+- `MMfont` - `UIFont` 
+- `MMyValueFromTop` - `NSInteger`
+- `MMselectedObject` - `id`
+- `MMtoolbarBackgroundImage` - `UIImage`
 
 
 #### Example 3 - Show with an array of strings and with custom colors and custom font.

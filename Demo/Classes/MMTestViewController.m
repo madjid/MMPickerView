@@ -36,13 +36,10 @@
     // Do any additional setup after loading the view from its nib.
   
   _stringsArray = @[@"Easy to use", @"Time-saver", @"Customizable", @"Only a few lines of code", @"Works with custom fonts"];
-  
-  _numbersArray = @[@12, @11, @123, @22, @5, @12, @11, @123, @22, @5];
-  
+    
   _objectsArray = [NSArray arrayWithObjects: @"hello", @14, @13.3, @"Icecream", @1,  nil];
   
   _selectedObject = [_objectsArray objectAtIndex:0];
-  
   _selectedString = [_stringsArray objectAtIndex:0];
   
 }
@@ -58,112 +55,37 @@
   /*
    Options:
    
-   pickerViewBackgroundColor - UIColor 
-   pickerViewTextColor - UIColor
-   toolbarBackgroundColor - UIColor
-   buttonColor - UIColor
-   font - UIFont 
-   yValueFromTop - NSInteger
-   selectedObject - An Object ex: a string
-   toolbarBackgroundImage  - UIImage
-   
-   Example 1:
-   
-   [MMPickerView showPickerViewInView:self.view
-   withStrings:_stringsArray
-   withOptions:nil
-   completion:^(NSString *selectedString) {
-   _label.text = selectedString;
-   _selectedString = selectedString;
-   }];
-   
-   
-   Example 2:
-   
-   [MMPickerView showPickerViewInView:self.view
-   withStrings:_stringsArray
-   withOptions:@{backgroundColor: [UIColor whiteColor],
-   textColor: [UIColor blackColor],
-   toolbarColor: [UIColor whiteColor],
-   buttonColor : [UIColor blueColor],
-   font : [UIFont systemFontOfSize:18],
-   yValue:@3,
-   selectedObject:_selectedString}
-   completion:^(NSString *selectedString) {
-   _label.text = selectedString;
-   _selectedString = selectedString;
-   }];
-   
-  
-   Example 3:
-   
-   [MMPickerView showPickerViewInView:self.view
-   withObjects:_objectsArray
-   withOptions:@{selectedObject:_selectedObject}
-   objectToStringConverter:^NSString *(id object) {
-   return [object description];
-   }
-   completion:^(id selectedObject) {
-   _label.text = [selectedObject description];
-   _selectedObject = selectedObject;
-   }];
-   
-  */
-  
+   MMbackgroundColor - UIColor
+   MMtextColor - UIColor
+   MMtoolbarColor - UIColor
+   MMbuttonColor - UIColor
+   MMfont - UIFont 
+   MMvalueY - NSInteger
+   MMselectedObject - An Object ex: a string
+   MMtoolbarBackgroundImage  - UIImage
+   */
+ 
   
   /*
-  NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
+   NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
   
   [MMPickerView showPickerViewInView:self.view
                          withStrings:strings
                          withOptions:nil
                           completion:^(NSString *selectedString) {
-                            
+                            //selectedString is the return value which you can use as you wish
                             self.label.text = selectedString;
-                            
                           }];
-  
-  */
-  /*
-  [MMPickerView showPickerViewInView:self.view
-                         withStrings:_stringsArray
-                         withOptions:@{backgroundColor: [UIColor whiteColor],
-                                       textColor: [UIColor blackColor],
-                                       toolbarColor: [UIColor whiteColor],
-                                       buttonColor : [UIColor blueColor],
-                                       font : [UIFont systemFontOfSize:18],
-                                       yValue:@3,
-                                       selectedObject:_selectedString}
-                          completion:^(NSString *selectedString) {
-    
-                            _label.text = selectedString;
-                            _selectedString = selectedString;
-  }];
- */
- 
-  /*
-  NSArray *objects = @[@"This is a mix of objects", @14, @13.3, @"A string", @1];
-
-  [MMPickerView showPickerViewInView:self.view
-                         withObjects:objects
-                         withOptions:nil
-             objectToStringConverter:^NSString *(id object) {
-               return [object description];
-             }
-                          completion:^(id selectedObject) {
-
-                            _label.text = [selectedObject description];
-  }];
   */
   
   NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
   UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
-  NSDictionary *options = @{backgroundColor: [UIColor blackColor],
-                            textColor: [UIColor whiteColor],
-                            toolbarColor: [UIColor darkGrayColor],
-                            buttonColor: [UIColor whiteColor],
-                            font: customFont,
-                            yValue: @5};
+  NSDictionary *options = @{MMbackgroundColor: [UIColor blackColor],
+                            MMtextColor: [UIColor whiteColor],
+                            MMtoolbarColor: [UIColor darkGrayColor],
+                            MMbuttonColor: [UIColor whiteColor],
+                            MMfont: customFont,
+                            MMvalueY: @5};
   
   [MMPickerView showPickerViewInView:self.view
                          withStrings:strings
@@ -175,7 +97,10 @@
   
   
   
-  
+   
 }
+
+
+
 
 @end

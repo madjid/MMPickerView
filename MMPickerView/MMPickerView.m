@@ -8,14 +8,14 @@
 
 #import "MMPickerView.h"
 
-NSString * const backgroundColor = @"backgroundColor";
-NSString * const textColor = @"textColor";
-NSString * const toolbarColor = @"toolbarColor";
-NSString * const buttonColor = @"buttonColor";
-NSString * const font = @"font";
-NSString * const yValue = @"yValueFromTop";
-NSString * const selectedObject = @"selectedObject";
-NSString * const toolbarBackgroundImage = @"toolbarBackgroundImage";
+NSString * const MMbackgroundColor = @"backgroundColor";
+NSString * const MMtextColor = @"textColor";
+NSString * const MMtoolbarColor = @"toolbarColor";
+NSString * const MMbuttonColor = @"buttonColor";
+NSString * const MMfont = @"font";
+NSString * const MMvalueY = @"yValueFromTop";
+NSString * const MMselectedObject = @"selectedObject";
+NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
 
 @interface MMPickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -131,7 +131,7 @@ NSString * const toolbarBackgroundImage = @"toolbarBackgroundImage";
   
   _pickerViewArray = array;
   
-  id chosenObject = options[selectedObject];
+  id chosenObject = options[MMselectedObject];
   NSInteger selectedRow;
   
   if (chosenObject!=nil) {
@@ -140,18 +140,18 @@ NSString * const toolbarBackgroundImage = @"toolbarBackgroundImage";
     selectedRow = [[_pickerViewArray objectAtIndex:0] integerValue];
   }
   
-  UIColor *pickerViewBackgroundColor = [[UIColor alloc] initWithCGColor:[options[backgroundColor] CGColor]];
-  UIColor *pickerViewTextColor = [[UIColor alloc] initWithCGColor:[options[textColor] CGColor]];
-  UIColor *toolbarBackgroundColor = [[UIColor alloc] initWithCGColor:[options[toolbarColor] CGColor]];
-  UIColor *buttonTextColor = [[UIColor alloc] initWithCGColor:[options[buttonColor] CGColor]];
+  UIColor *pickerViewBackgroundColor = [[UIColor alloc] initWithCGColor:[options[MMbackgroundColor] CGColor]];
+  UIColor *pickerViewTextColor = [[UIColor alloc] initWithCGColor:[options[MMtextColor] CGColor]];
+  UIColor *toolbarBackgroundColor = [[UIColor alloc] initWithCGColor:[options[MMtoolbarColor] CGColor]];
+  UIColor *buttonTextColor = [[UIColor alloc] initWithCGColor:[options[MMbuttonColor] CGColor]];
   UIFont *pickerViewFont = [[UIFont alloc] init];
-  pickerViewFont = options[font];
-  _yValueFromTop = [options[yValue] floatValue];
+  pickerViewFont = options[MMfont];
+  _yValueFromTop = [options[MMvalueY] floatValue];
   
   [self setFrame: view.bounds];
   [self setBackgroundColor:[UIColor clearColor]];
   
-  UIImage * toolbarImage = options[toolbarBackgroundImage];
+  UIImage * toolbarImage = options[MMtoolbarBackgroundImage];
   
   //Whole screen with PickerView and a dimmed background
   _pickerViewContainerView = [[UIView alloc] initWithFrame:view.bounds];
