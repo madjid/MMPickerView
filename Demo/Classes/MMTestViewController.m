@@ -80,10 +80,10 @@
   
   NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
   UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
-  NSDictionary *options = @{MMbackgroundColor: [UIColor blackColor],
-                            MMtextColor: [UIColor whiteColor],
-                            MMtoolbarColor: [UIColor darkGrayColor],
-                            MMbuttonColor: [UIColor whiteColor],
+  NSDictionary *options = @{MMbackgroundColor: [UIColor colorWithHue:0.091 saturation:0.177 brightness:0.973 alpha:1],
+                            MMtextColor: [UIColor colorWithRed:0.161 green:0.251 blue:0.322 alpha:1],
+                            MMtoolbarColor: [UIColor colorWithRed:0.267 green:0.447 blue:0.580 alpha:1],
+                            MMbuttonColor: [UIColor colorWithRed:0.561 green:0.737 blue:0.859 alpha:1],
                             MMfont: customFont,
                             MMvalueY: @5};
   

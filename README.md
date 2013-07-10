@@ -105,8 +105,6 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
   MMtoolbarBackgroundImage - UIImage - The background image of the toolbar (320 x 44 for non retina, 640 x 88 for retina)
  */
   
-  
-  
   NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
   UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
   NSDictionary *options = @{MMbackgroundColor: [UIColor blackColor],

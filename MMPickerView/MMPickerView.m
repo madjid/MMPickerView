@@ -237,7 +237,7 @@ NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
   
   _pickerViewBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismiss)];
   _pickerViewToolBar.items = @[flexibleSpace, _pickerViewBarButtonItem];
-  [[UIBarButtonItem appearance] setTintColor:buttonTextColor];
+  [_pickerViewBarButtonItem setTintColor:buttonTextColor];
   
   //[_pickerViewBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Helvetica-Neue" size:23.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
   /*
