@@ -15,7 +15,7 @@ Add `pod 'MMPickerView'` to your Podfile.
 _**Important note if your project doesn't use ARC**: you must add the `-fobjc-arc` compiler flag to `MMPickerView.m` in Target Settings > Build Phases > Compile Sources._
 
 * Drag the `MMPickerView/MMPickerView` folder into your project.
-* Add the **CoreGraphics** framework to your project.
+* Make sure you have the **CoreGraphics** framework in your project.
 
 ## Usage
 
@@ -76,18 +76,18 @@ You can show the PickerView:
 ```
 
 ### Customizing MMPickerView
-Both show methods use a `NSDictionary` to set the options of the `MMPickerView`. If you want a native looking PickerView, just set it to nil. In case of customization, use any of the different properties to customize the PickerView. All of the properties are optional.
+Both show methods use a `NSDictionary` to set the options of the `MMPickerView`. If you want a native looking PickerView, just `withOptions: nil`. In case of customization, use any of the different properties to customize the PickerView. All of the properties are optional, which means that if you only want to change one thing, like for eg the text color you can do like this, `withOptions: @{MMtextColor: [UIColor redColor]}`
 
 **Options**
 
-- `MMbackgroundColor` - `UIColor`
-- `MMtextColor` - `UIColor`
-- `MMtoolbarBackgroundColor` - `UIColor`
-- `MMbuttonColor` - `UIColor`
-- `MMfont` - `UIFont` 
-- `MMyValueFromTop` - `NSInteger`
-- `MMselectedObject` - `id`
-- `MMtoolbarBackgroundImage` - `UIImage`
+- `MMbackgroundColor` - `UIColor`        //The background color of the PickerView (>=iOS 7)
+- `MMtextColor` - `UIColor` 	         //The text color of the PickerView
+- `MMtoolbarBackgroundColor` - `UIColor` //The background color of the toolbar
+- `MMbuttonColor` - `UIColor`			 //The background color (<= iOS 6) or text color (>=iOS 7) of the Done button
+- `MMfont` - `UIFont` 					 //The font of the PickerView labels
+- `MMValueY` - `NSInteger`				 //The Y value from the top of every label in the PickerView, useful when changing font and font-size.
+- `MMselectedObject` - `id`				 //The selected object presented in the PickerView
+- `MMtoolbarBackgroundImage` - `UIImage` //The background image of the toolbar 
 
 
 #### Example 3 - Show with an array of strings and with custom colors and custom font.
@@ -95,12 +95,12 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
   
   NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
   UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
-  NSDictionary *options = @{backgroundColor: [UIColor blackColor],
-                                  textColor: [UIColor whiteColor],
-                               toolbarColor: [UIColor darkGrayColor],
-                                buttonColor: [UIColor whiteColor],
-                                       font: customFont,
-                                     yValue: @5};
+  NSDictionary *options = @{MMbackgroundColor: [UIColor blackColor],
+                                  MMtextColor: [UIColor whiteColor],
+                               MMtoolbarColor: [UIColor darkGrayColor],
+                                MMbuttonColor: [UIColor whiteColor],
+                                       MMfont: customFont,
+                                     MMValueY: @5};
 
   
   [MMPickerView showPickerViewInView:self.view
