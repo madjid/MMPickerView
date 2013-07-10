@@ -81,7 +81,7 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
 **Options**
 
 - `MMbackgroundColor` - `UIColor`        
-  //The background color of the PickerView (>=iOS 7)
+- `MMbackgroundColor` - `UIColor` - `The background color of the PickerView (>=iOS 7)`
 - `MMtextColor` - `UIColor`
   //The text color of the PickerView
 - `MMtoolbarBackgroundColor` - `UIColor`
