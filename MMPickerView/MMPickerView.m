@@ -221,12 +221,12 @@ NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
   
   if (iOSVersion < 7.0) {
     _pickerViewToolBar.tintColor = toolbarBackgroundColor;
-    // [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
+    //[_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
   }else{
      [_pickerViewToolBar setBackgroundColor:toolbarBackgroundColor];
 
- //    _pickerViewToolBar.tintColor = toolbarBackgroundColor;
-    //_pickerViewToolBar.barTintColor = toolbarBackgroundColor;
+     //_pickerViewToolBar.tintColor = toolbarBackgroundColor;
+    _pickerViewToolBar.barTintColor = toolbarBackgroundColor;
   }
   
   if (toolbarImage!=nil) {
