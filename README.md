@@ -25,6 +25,7 @@ _**Important note if your project doesn't use ARC**: you must add the `-fobjc-ar
 
 * Drag the `MMPickerView/MMPickerView` folder into your project.
 * Make sure you have the **CoreGraphics** framework in your project.
+* Include MMPickerView by adding `#import "MMPickerView.h"` to your ViewController
 
 ## Usage
 
