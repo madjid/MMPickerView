@@ -15,9 +15,9 @@ Images to the left: iOS 6. Images to the right: iOS 7.
 
 ### From CocoaPods
 
-Add `pod 'MMPickerView'` to your Podfile.
-Install by running `pod install`
-Include MMPickerView by adding `#import <MMPickerView.h>` to your ViewController
+* Add `pod 'MMPickerView'` to your Podfile.
+* Install by running `pod install`
+* Include MMPickerView by adding `#import <MMPickerView.h>` to your ViewController
 
 ### Manually
 
