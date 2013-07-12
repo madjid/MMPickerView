@@ -17,7 +17,7 @@ Images to the left: iOS 6. Images to the right: iOS 7.
 
 * Add `pod 'MMPickerView'` to your Podfile.
 * Install by running `pod install`
-* Include MMPickerView by adding `#import <MMPickerView.h>` to your ViewController
+* Include MMPickerView by adding `#import <MMPickerView.h>`
 
 ### Manually
 
@@ -25,7 +25,7 @@ _**Important note if your project doesn't use ARC**: you must add the `-fobjc-ar
 
 * Drag the `MMPickerView/MMPickerView` folder into your project.
 * Make sure you have the **CoreGraphics** framework in your project.
-* Include MMPickerView by adding `#import "MMPickerView.h"` to your ViewController
+* Include MMPickerView by adding `#import "MMPickerView.h"` 
 
 ## Usage
 
