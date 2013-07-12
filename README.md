@@ -1,7 +1,7 @@
 MMPickerView
 ============
-
-An easy to use and customizable PickerView for your iOS app. With animation, design options, selected value and previously selected value functionality.
+ 
+An easy to use and customizable view component that presents a `UIPickerView` with a toolbar, Done button, animation, design options, selected value and previously selected value functionality.
 Works with iOS 6 and even better in iOS 7, because it let's you change the background color of the PickerView.
 
 
@@ -15,7 +15,9 @@ Images to the left: iOS 6. Images to the right: iOS 7.
 
 ### From CocoaPods
 
-Add `pod 'MMPickerView'` to your Podfile.
+Add `pod 'MMPickerView' to your Podfile.
+Install by running `pod install`
+Include MMPickerView by adding `#import <MMPickerView.h>` to your ViewController
 
 ### Manually
 
