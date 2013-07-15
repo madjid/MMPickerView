@@ -47,6 +47,7 @@
    MMvalueY - NSInteger
    MMselectedObject - An Object ex: a string
    MMtoolbarBackgroundImage  - UIImage
+   MMtextAlignment - NSNumber (@0 - Left, @1 - Center, @2 - Right)
    
    ***************
    DON'T FORGET TO ONLY UNCOMMENT ONE EXAMPLE AT A TIME, OTHERWISE YOU WILL HAVE SEVERAL PICKERVIEWS AT THE SAME TIME.
