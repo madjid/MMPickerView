@@ -16,6 +16,7 @@ NSString * const MMfont = @"font";
 NSString * const MMvalueY = @"yValueFromTop";
 NSString * const MMselectedObject = @"selectedObject";
 NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
+NSString * const MMtextAlignment = @"textAlignment";
 
 @interface MMPickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -33,6 +34,7 @@ NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
 @property (nonatomic, strong) UIColor *pickerViewTextColor;
 @property (nonatomic, strong) UIFont *pickerViewFont;
 @property (nonatomic, assign) CGFloat yValueFromTop;
+@property (nonatomic, assign) NSInteger pickerViewTextAlignment;
 @property (copy) void (^onDismissCompletion)(NSString *);
 @property (copy) NSString *(^objectToStringConverter)(id object);
 
@@ -138,6 +140,17 @@ NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
     selectedRow = [_pickerViewArray indexOfObject:chosenObject];
   }else{
     selectedRow = [[_pickerViewArray objectAtIndex:0] integerValue];
+  }
+  
+  
+  NSNumber *textAlignment = [[NSNumber alloc] init];
+  textAlignment = options[MMtextAlignment];
+  
+  //Default value is NSTextAlignmentCenter
+  _pickerViewTextAlignment = 1;
+  
+  if (textAlignment != nil) {
+  _pickerViewTextAlignment = [options[MMtextAlignment] integerValue];
   }
   
   UIColor *pickerViewBackgroundColor = [[UIColor alloc] initWithCGColor:[options[MMbackgroundColor] CGColor]];
@@ -323,7 +336,7 @@ NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
     CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 35); // 35 or 44
     pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
     [pickerViewLabel setTag:1];
-    [pickerViewLabel setTextAlignment:NSTextAlignmentCenter];
+    [pickerViewLabel setTextAlignment: _pickerViewTextAlignment]; //NSTextAlignmentCenter];
     [pickerViewLabel setBackgroundColor:[UIColor clearColor]];
     [pickerViewLabel setTextColor:_pickerViewTextColor];
     [pickerViewLabel setFont:_pickerViewFont];

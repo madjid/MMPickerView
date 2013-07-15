@@ -100,7 +100,8 @@
                                         MMbuttonColor: [UIColor blueColor],
                                         MMfont: [UIFont systemFontOfSize:18],
                                         MMvalueY: @3,
-                                        MMselectedObject:_selectedString}
+                                        MMselectedObject:_selectedString,
+                                        MMtextAlignment:@1}
                            completion:^(NSString *selectedString) {
    
                              _label.text = selectedString;
