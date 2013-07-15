@@ -15,7 +15,7 @@ Images to the left: iOS 6. Images to the right: iOS 7.
 
 ### From CocoaPods
 
-* Add `pod 'MMPickerView'` to your Podfile.
+* Add `pod 'MMPickerView', '~> 0.0.1'` to your Podfile.
 * Install by running `pod install`
 * Include MMPickerView by adding `#import <MMPickerView.h>`
 
@@ -99,11 +99,10 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
 - `MMValueY` - `NSInteger` 
 - `MMselectedObject` - `id` 
 - `MMtoolbarBackgroundImage` - `UIImage`
+- `MMtextAlignment` - `NSNumber`
 
-
-#### Example 3 - Show with an array of strings and with custom colors and custom font.
 ```objective-c
- /*
+  /*
   Options:
   MMbackgroundColor - UIColor - The background color of the PickerView (>=iOS 7)
   MMtextColor - UIColor - The text color of the PickerView
@@ -113,7 +112,12 @@ Both show methods use a `NSDictionary` to set the options of the `MMPickerView`.
   MMValueY - NSInteger - The Y value from the top of every label in the PickerView, useful when changing font/font-size.
   MMselectedObject - id - The selected object presented in the PickerView, an object from the array, for eg. [yourArray objectAtIndex:0];
   MMtoolbarBackgroundImage - UIImage - The background image of the toolbar (320 x 44 for non retina, 640 x 88 for retina)
+  MMtextAlignment - NSNumber - The text alignment of the labels in the PickerView, @0 for Left, @1 for Center, @2 for Right
  */
+```
+
+#### Example 3 - Show with an array of strings and with custom colors and custom font.
+```objective-c
   
   NSArray *strings = @[@"This", @"is", @"just", @"an array", @"of strings."];
   UIFont *customFont  = [UIFont fontWithName:@"Palatino-Bold" size:19.0];
