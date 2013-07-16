@@ -17,6 +17,7 @@ NSString * const MMvalueY = @"yValueFromTop";
 NSString * const MMselectedObject = @"selectedObject";
 NSString * const MMtoolbarBackgroundImage = @"toolbarBackgroundImage";
 NSString * const MMtextAlignment = @"textAlignment";
+NSString * const MMshowsSelectionIndicator = @"showsSelectionIndicator";
 
 @interface MMPickerView () <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -35,6 +36,7 @@ NSString * const MMtextAlignment = @"textAlignment";
 @property (nonatomic, strong) UIFont *pickerViewFont;
 @property (nonatomic, assign) CGFloat yValueFromTop;
 @property (nonatomic, assign) NSInteger pickerViewTextAlignment;
+@property (nonatomic, assign) BOOL pickerViewShowsSelectionIndicator;
 @property (copy) void (^onDismissCompletion)(NSString *);
 @property (copy) NSString *(^objectToStringConverter)(id object);
 
@@ -145,13 +147,19 @@ NSString * const MMtextAlignment = @"textAlignment";
   
   NSNumber *textAlignment = [[NSNumber alloc] init];
   textAlignment = options[MMtextAlignment];
-  
   //Default value is NSTextAlignmentCenter
   _pickerViewTextAlignment = 1;
   
   if (textAlignment != nil) {
   _pickerViewTextAlignment = [options[MMtextAlignment] integerValue];
   }
+  
+  BOOL showSelectionIndicator = [options[MMshowsSelectionIndicator] boolValue];
+  
+  if (!showSelectionIndicator) {
+    _pickerViewShowsSelectionIndicator = 1;
+  }
+  _pickerViewShowsSelectionIndicator = showSelectionIndicator;
   
   UIColor *pickerViewBackgroundColor = [[UIColor alloc] initWithCGColor:[options[MMbackgroundColor] CGColor]];
   UIColor *pickerViewTextColor = [[UIColor alloc] initWithCGColor:[options[MMtextColor] CGColor]];
@@ -256,18 +264,19 @@ NSString * const MMtextAlignment = @"textAlignment";
   [_pickerViewBarButtonItem setTintColor:buttonTextColor];
   
   //[_pickerViewBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Helvetica-Neue" size:23.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
+  
   /*
    _pickerDoneButton = [[UIButton alloc] initWithFrame:CGRectMake(_pickerContainerView.frame.size.width - 80.0, 10.0, 60.0, 24.0)];
    [_pickerDoneButton setTitle:@"Done" forState:UIControlStateNormal];
    [_pickerContainerView addSubview:_pickerDoneButton];
    [_pickerDoneButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-   */
+  */
   
   //Add pickerView
   _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0, 44.0, 320.0, 216.0)];
   [_pickerView setDelegate:self];
   [_pickerView setDataSource:self];
-  [_pickerView setShowsSelectionIndicator:YES];
+  [_pickerView setShowsSelectionIndicator: _pickerViewShowsSelectionIndicator];//YES];
   [_pickerContainerView addSubview:_pickerView];
   
   //[self.pickerViewContainerView setAlpha:0.0];
@@ -336,7 +345,7 @@ NSString * const MMtextAlignment = @"textAlignment";
     CGRect labelFrame = CGRectMake(0.0, _yValueFromTop, 292.0, 35); // 35 or 44
     pickerViewLabel = [[UILabel alloc] initWithFrame:labelFrame];
     [pickerViewLabel setTag:1];
-    [pickerViewLabel setTextAlignment: _pickerViewTextAlignment]; //NSTextAlignmentCenter];
+    [pickerViewLabel setTextAlignment: _pickerViewTextAlignment];
     [pickerViewLabel setBackgroundColor:[UIColor clearColor]];
     [pickerViewLabel setTextColor:_pickerViewTextColor];
     [pickerViewLabel setFont:_pickerViewFont];

@@ -17,6 +17,7 @@ extern NSString * const MMvalueY;
 extern NSString * const MMselectedObject;
 extern NSString * const MMtoolbarBackgroundImage;
 extern NSString * const MMtextAlignment;
+extern NSString * const MMshowsSelectionIndicator;
 
 @interface MMPickerView: UIView 
 
